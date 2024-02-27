@@ -1,0 +1,10 @@
+@use './src/app/styles/variables';
+
+.content {
+  color: variables.$light-gray;
+  padding: variables.$padding-lg;
+}
+
+.page-wrapper {
+  font-family: variables.$default-font-family;
+}
