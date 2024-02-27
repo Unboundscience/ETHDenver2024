@@ -1,9 +1,5 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
-@use '../../../src/styles.scss' as theme;
-$color-config: mat.get-color-config(theme.$mat-dark-theme);
-// Get the primary color palette from the color-config.
-$primary-palette: map.get($color-config, 'primary');
 
 $default-font-family: Roboto, "Helvetica Neue", sans-serif;
 
@@ -15,6 +11,20 @@ $margin-sm: .5em;
 $margin-md: 1em;
 $margin-lg: 2em;
 
-$primary-text: mat.get-color-from-palette($primary-palette, A100);
+//font sizes
+$font-size-xs: 8px;
+$font-size-sm: 12px;
+$font-size-md: 16px;
+$font-size-lg: 24px;
+
+//colors
+$light-blue: #2158ff;
+$med-blue: #0033cc;
+$dark-blue: #121D6B;
+$black: #111111;
+$light-gray: #d3d4d7;
+$light-green: #98c48c;
+
+
 
 
