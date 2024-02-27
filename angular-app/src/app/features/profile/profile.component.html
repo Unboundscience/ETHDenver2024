@@ -1,0 +1,24 @@
+
+<h2>Profile Form</h2>
+
+<form [formGroup]="profileForm">
+
+    <mat-form-field class="ff-quarter-width">
+      <mat-label>First Name:</mat-label>
+      <input matInput placeholder="First Name" formControlName="fname"/>
+    </mat-form-field>
+<br/>
+  <mat-form-field class="ff-quarter-width">
+    <mat-label>Last Name:</mat-label>
+    <input matInput placeholder="Last Name" formControlName="lname"/>
+  </mat-form-field>
+  <br/>
+  <mat-form-field class="ff-quarter-width">
+    <mat-label>Email:</mat-label>
+    <input type="email" matInput placeholder="Email" formControlName="email"/>
+  </mat-form-field>
+
+    <button mat-button aria-label="submit" (click)="submit()" [disabled]="!profileForm.valid">Save</button>
+
+
+</form>

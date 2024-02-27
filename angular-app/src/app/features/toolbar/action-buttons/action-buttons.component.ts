@@ -4,6 +4,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {UserAuthService} from "../services/user-auth.service";
 import {CommonModule} from "@angular/common";
+import {WalletConnectButtonComponent} from "../wallet-connect-button/wallet-connect-button.component";
 
 @Component({
   selector: 'app-action-buttons',
@@ -13,6 +14,7 @@ import {CommonModule} from "@angular/common";
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
+    WalletConnectButtonComponent
   ],
   templateUrl: './action-buttons.component.html',
   styleUrl: './action-buttons.component.scss',

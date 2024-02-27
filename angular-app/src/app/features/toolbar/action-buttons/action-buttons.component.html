@@ -5,25 +5,8 @@
   <span>Angular Crypto Starter App</span>
   <span class="header-spacer"></span>
 
-  <button mat-icon-button
-          (click)="userAuthService.login()"
-          *ngIf="!(userAuthService.state$ | async)?.isWalletConnected"
-          color="warn"
-          class="example-icon favorite-icon"
-          aria-label="Connet Wallet"
-          title="Connect Wallet">
-    <mat-icon>input</mat-icon>
-  </button>
+  <wallet-connect-button></wallet-connect-button>
 
-  <button mat-icon-button
-          (click)="userAuthService.logout()"
-          *ngIf="(userAuthService.state$ | async)?.isWalletConnected"
-          color="accent"
-          class="example-icon favorite-icon"
-          aria-label="Disconnect Wallet"
-          title="Disconnect Wallet">
-    <mat-icon>eject</mat-icon>
-  </button>
   <button mat-icon-button
           color="primary"
           class="example-icon"

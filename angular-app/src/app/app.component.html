@@ -1,13 +1,13 @@
-<main class="main dark-theme">
+<main class="main dark-theme page-wrapper">
   <nav>
     <app-action-buttons></app-action-buttons>
   </nav>
 
   <div class="content">
     <h1>Main Content</h1>
-
-    <w3m-button />
-
+    <pre>Wallet Account User: {{ account | json }}</pre>
+    <pre>Latest Block in OP Sepolia: {{ latestBlock$ | async  }}</pre>
+    <router-outlet></router-outlet>
   </div>
 </main>
-<router-outlet></router-outlet>
+
