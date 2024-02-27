@@ -20,8 +20,13 @@
     "@angular/platform-browser": "^17.0.0",
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/router": "^17.0.0",
+    "@wagmi/core": "^1.4.13",
+    "@web3modal/ethereum": "^2.7.1",
+    "@web3modal/html": "^2.7.1",
+    "@web3modal/wagmi1": "^4.0.0-544a28f1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "viem": "^1.21.4",
     "zone.js": "~0.14.2"
   },
   "devDependencies": {

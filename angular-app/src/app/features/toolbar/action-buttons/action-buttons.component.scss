@@ -1,0 +1,9 @@
+nav {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0; /* required */
+}
+
+.header-spacer {
+  flex: 1 1 auto;
+}
