@@ -2,6 +2,12 @@ import { Component } from '@angular/core';
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {Web3Service} from "../../core/services/web3.service";
+import {
+    MatSnackBar,
+    MatSnackBarHorizontalPosition,
+    MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-landing-pg',
@@ -14,16 +20,30 @@ import {Web3Service} from "../../core/services/web3.service";
   styleUrl: './landing-pg.component.scss'
 })
 export class LandingPgComponent {
+    horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+    verticalPosition: MatSnackBarVerticalPosition = 'top';
+    duration = 1200;
+
     // isConnected: boolean;
     // isConnecting: boolean;
     // isDisconnected: boolean;
     // isReconnecting: boolean;
     // status: string;
-    constructor(private web3Service: Web3Service) {}
+    constructor(private web3Service: Web3Service,
+                private snackBarService: MatSnackBar,
+                private router: Router) {}
 
     login(): void {
         const nextStep = this.getLoginNextStep();
-        alert(nextStep);
+        const nextStepLabelMap = {
+            'connect-wallet': 'Please connect your wallet -->',
+            'check-nft': 'Checking for NFT...',
+            'sign-up': 'Let\'s Sign You Up!'
+        };
+        this.openSnackBar(nextStepLabelMap[nextStep]);
+        if (nextStep === 'sign-up'){
+            this.router.navigate(['/sign-up']);
+        }
     }
 
     isWalletConnected(): boolean {
@@ -34,16 +54,24 @@ export class LandingPgComponent {
         return false;
     }
 
-    getLoginNextStep(): 'check-nft' | 'sign-up' {
+    getLoginNextStep(): 'connect-wallet' | 'check-nft' | 'sign-up' {
         if (this.isWalletConnected()) {
-            return 'check-nft';
+            return 'sign-up';
             //check for nft in the wallet
             //if no nft, go to the scentist / enthusiast
             // lukso form takes nft meta
         } else {
             //navigate to sign up flow
-            return 'sign-up';
+            return 'connect-wallet';
         }
+    }
+
+    openSnackBar(msg: string) {
+        this.snackBarService.open(msg, '', {
+            horizontalPosition: this.horizontalPosition,
+            verticalPosition: this.verticalPosition,
+            duration: this.duration
+        });
     }
 
 }
