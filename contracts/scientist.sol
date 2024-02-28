@@ -2,19 +2,19 @@
 // Compatible with OpenZeppelin Contracts ^5.0.0
 pragma solidity ^0.8.20;
 
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
-contract ScientistToken is ERC20, Ownable {
-    constructor(address initialOwner)
-        ERC20("UboundScientist", "UBSC")
-        Ownable(initialOwner)
+contract ScientistToken is ERC721 {
+    uint256 private _nextTokenId;
+
+    constructor()
+        ERC721("UboundScientist", "UBSC")
     {}
 
-      mapping(address => bool) public isScientist;
-
-    function mint(address to, uint256 amount) public onlyOwner {
-        _mint(to, amount);
-        isScientist[to] = true;
+    function Mint(address to) public {
+        uint256 tokenId = _nextTokenId++;
+        _safeMint(to, tokenId);
     }
 }
+
+
