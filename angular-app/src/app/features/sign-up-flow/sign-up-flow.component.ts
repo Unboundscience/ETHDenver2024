@@ -1,12 +1,55 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MatRadioModule} from "@angular/material/radio";
+import {MatIconModule} from "@angular/material/icon";
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {CommonModule} from "@angular/common";
+import {Router} from "@angular/router";
+import {distinctUntilChanged} from "rxjs";
+import {
+    MatSnackBar,
+    MatSnackBarHorizontalPosition,
+    MatSnackBarModule,
+    MatSnackBarVerticalPosition
+} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-sign-up-flow',
   standalone: true,
-  imports: [],
+  imports: [
+      CommonModule,
+      ReactiveFormsModule,
+      MatRadioModule,
+      MatIconModule,
+      MatSnackBarModule
+  ],
   templateUrl: './sign-up-flow.component.html',
   styleUrl: './sign-up-flow.component.scss'
 })
-export class SignUpFlowComponent {
+export class SignUpFlowComponent implements OnInit {
+    userClassForm: FormGroup;
+    horizontalPosition: MatSnackBarHorizontalPosition = 'end';
+    verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+    duration = 1200;
+
+    constructor(private fb: FormBuilder,
+                private router: Router,
+                private snackBarService: MatSnackBar) {
+        this.userClassForm = this.fb.group({
+            userClass: this.fb.control([], Validators.required)
+        })
+    }
+
+    ngOnInit(): void {
+        this.userClassForm.valueChanges
+            .pipe(distinctUntilChanged())
+            .subscribe((formValue) => {
+                this.snackBarService.open(`Let's get your info ${formValue['userClass'].toUpperCase()}`, '', {
+                    horizontalPosition: this.horizontalPosition,
+                    verticalPosition: this.verticalPosition,
+                    duration: this.duration
+                });
+                this.router.navigate(['/profile']);
+        });
+    }
 
 }

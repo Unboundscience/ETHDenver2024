@@ -40,9 +40,10 @@ export class LandingPgComponent {
             'check-nft': 'Checking for NFT...',
             'sign-up': 'Let\'s Sign You Up!'
         };
-        this.openSnackBar(nextStepLabelMap[nextStep]);
         if (nextStep === 'sign-up'){
             this.router.navigate(['/sign-up']);
+        } else {
+            this.openSnackBar(nextStepLabelMap[nextStep]);
         }
     }
 
