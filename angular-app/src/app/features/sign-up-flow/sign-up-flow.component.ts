@@ -13,17 +13,17 @@ import {
 } from "@angular/material/snack-bar";
 
 @Component({
-  selector: 'app-sign-up-flow',
-  standalone: true,
-  imports: [
-      CommonModule,
-      ReactiveFormsModule,
-      MatRadioModule,
-      MatIconModule,
-      MatSnackBarModule
-  ],
-  templateUrl: './sign-up-flow.component.html',
-  styleUrl: './sign-up-flow.component.scss'
+    selector: 'app-sign-up-flow',
+    standalone: true,
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatRadioModule,
+        MatIconModule,
+        MatSnackBarModule
+    ],
+    templateUrl: './sign-up-flow.component.html',
+    styleUrl: './sign-up-flow.component.scss'
 })
 export class SignUpFlowComponent implements OnInit {
     userClassForm: FormGroup;
@@ -49,7 +49,6 @@ export class SignUpFlowComponent implements OnInit {
                     duration: this.duration
                 });
                 this.router.navigate(['/profile']);
-        });
+            });
     }
-
 }
