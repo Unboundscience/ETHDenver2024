@@ -5,11 +5,13 @@ import {MatButtonModule} from "@angular/material/button";
 import {UserAuthService} from "../services/user-auth.service";
 import {CommonModule} from "@angular/common";
 import {WalletConnectButtonComponent} from "../wallet-connect-button/wallet-connect-button.component";
+import {RouterLink, RouterLinkActive} from "@angular/router";
 
 @Component({
   selector: 'app-action-buttons',
   standalone: true,
   imports: [
+    RouterLink, RouterLinkActive,
     CommonModule,
     MatToolbarModule,
     MatIconModule,
