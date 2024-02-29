@@ -6,6 +6,7 @@ import {Web3Service} from "./core/services/web3.service";
 import {MatButtonModule} from "@angular/material/button";
 import {Observable} from "rxjs";
 import {AlchemyService} from "./core/services/alchemy.service";
+import {UserAccountService} from "./features/shared/services/user-account.service";
 
 @Component({
   selector: 'app-root',
@@ -13,11 +14,14 @@ import {AlchemyService} from "./core/services/alchemy.service";
   imports: [CommonModule,
     MatButtonModule,
     RouterOutlet,
-    RouterLink, RouterLinkActive,
-  ActionButtonsComponent],
+    RouterLink,
+    RouterLinkActive,
+    ActionButtonsComponent
+  ],
   providers: [
     Web3Service,
-    AlchemyService
+    AlchemyService,
+    UserAccountService
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
@@ -28,7 +32,9 @@ export class AppComponent implements OnInit {
   latestBlock$: Observable<any>;
   account: any;
 
-  constructor(public web3Service: Web3Service, private alchemyService: AlchemyService) {
+  constructor(public web3Service: Web3Service,
+              private alchemyService: AlchemyService,
+              private userAccountService: UserAccountService) {
     this.latestBlock$ = this.alchemyService.getLatestBlock();
     this.account = null;
   }
