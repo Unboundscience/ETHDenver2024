@@ -8,7 +8,8 @@ import {
     MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 import {Router} from "@angular/router";
-import {AlchemyService} from "../../core/services/alchemy.service";
+import {AlchemyService, NftApiDto} from "../../core/services/alchemy.service";
+import {environment} from "../../../environments/environment";
 
 @Component({
     selector: 'app-landing-pg',
@@ -29,6 +30,7 @@ export class LandingPgComponent {
     verticalPosition: MatSnackBarVerticalPosition = 'top';
     duration = 1200;
 
+    readonly NFT_ACCESS_CONTRACT = '0x2f98ed540467ffAb3841Aa8B0bBe175bA85DbdF9';
     // isConnected: boolean;
     // isConnecting: boolean;
     // isDisconnected: boolean;
@@ -52,14 +54,20 @@ export class LandingPgComponent {
             const walletOwnerAddres = this.web3Service.getAccountOnce();
             //check for nft in the wallet
             this.alchemyService.getNftsForOwner(walletOwnerAddres?.address).then((nfts) => {
-                // if they have the nft go to the dashboard
-                if (nfts.ownedNfts !== undefined && Array.isArray(nfts.ownedNfts) && nfts.ownedNfts.length > 0) {
-                    this.router.navigate(['/dashboard']);
-                    // if not, send them to create a profile and mint an nft
-                } else {
-                    this.openSnackBar(nextStepLabelMap['sign-up']);
-                    this.router.navigate(['/sign-up']);
-                }
+                this.openSnackBar('Checking Your Access...');
+                setTimeout(() => {
+                    // if they have the nft go to the dashboard
+                    if (this.hasRequiredNft(nfts)) {
+                        this.openSnackBar('Access Verified...');
+                        setTimeout(() => {
+                            this.router.navigate(['/dashboard']);
+                        }, 750);
+                        // if not, send them to create a profile and mint an nft
+                    } else {
+                        this.openSnackBar(nextStepLabelMap['sign-up']);
+                        this.router.navigate(['/sign-up']);
+                    }
+                }, 1000);
             });
         } else {
             this.openSnackBar(nextStepLabelMap['connect-wallet']);
@@ -70,6 +78,13 @@ export class LandingPgComponent {
         const myAcc: any = this.web3Service.getAccountOnce();
         if (myAcc?.isConnected) {
             return true;
+        }
+        return false;
+    }
+
+    hasRequiredNft(nfts: { ownedNfts: Array<NftApiDto> | undefined }): boolean {
+        if (nfts.ownedNfts !== undefined && Array.isArray(nfts.ownedNfts) && nfts.ownedNfts.length > 0) {
+            return this.alchemyService.hasRequiredNft(this.NFT_ACCESS_CONTRACT, nfts.ownedNfts);
         }
         return false;
     }

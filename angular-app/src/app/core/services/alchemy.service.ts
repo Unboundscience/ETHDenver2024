@@ -2,7 +2,34 @@ import {Injectable} from '@angular/core';
 import {Network, Alchemy} from 'alchemy-sdk';
 import {environment} from '../../../environments/environment';
 import {from, Observable} from "rxjs";
+import {some} from "lodash-es";
 const ethers = require('ethers');
+
+export type ContractMetaDto = {
+  address: string;
+  name: string;
+  symbol: string;
+  totalSupply: string;
+  tokenType: string;
+  openSeaMetadata: any;
+  spamClassifications: Array<any>;
+}
+
+export type NftApiDto =
+  {
+    contract: ContractMetaDto;
+    tokenId: string;
+    tokenType: string;
+    image: any;
+    raw: {
+      metadata: any;
+      error: string
+    };
+    mint: any;
+    timeLastUpdated: string;
+    balance: string;
+    acquiredAt: {}
+  };
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +63,10 @@ export class AlchemyService {
     return this.alchemy.nft.getNftsForOwner(ownerAddress).then( (nfts) => {
       return nfts;
     });
+  }
+
+  hasRequiredNft(address: string, nfts: Array<NftApiDto>): boolean {
+    return nfts.some((nft: NftApiDto) => nft?.contract?.address === address);
   }
 
   mintNFT(toAddress: string, amount: number): void {
