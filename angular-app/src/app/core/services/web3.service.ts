@@ -5,10 +5,11 @@ import {Web3Modal} from "@web3modal/html";
 import {Web3ModalOptions} from "@web3modal/wagmi1/dist/types/src/client";
 import { environment } from '../../../environments/environment';
 import {BehaviorSubject, Observable, of} from "rxjs";
-import { getAccount } from '@wagmi/core';
+import {getAccount, GetAccountResult} from '@wagmi/core';
 import {isEqual} from "lodash-es";
+import {PublicClient} from "viem";
 
-type Account = {
+export type WalletAccountDto = {
   address: string;
   connector: any;
   isConnected: boolean;
@@ -46,7 +47,7 @@ export class Web3Service {
     const modalOptions:Web3ModalOptions =  { wagmiConfig, projectId: this.WAGMI_PROJ_ID, chains: this.chains };
     this.web3modal = createWeb3Modal(modalOptions);
 
-    let accountCache: Account = {
+    let accountCache: WalletAccountDto = {
       address: '',
       connector: null,
       isConnected: false,
@@ -60,11 +61,11 @@ export class Web3Service {
       if (isEqual(upd, accountCache)) {
         this.account$.next(upd);
       }
-      accountCache = upd as Account;
+      accountCache = upd as WalletAccountDto;
     });
   }
 
-  getAccountOnce() {
+  getAccountOnce(): any {
     return getAccount();
   }
 }

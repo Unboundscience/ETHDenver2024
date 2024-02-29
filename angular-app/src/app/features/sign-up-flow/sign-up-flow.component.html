@@ -1,0 +1,14 @@
+<div class="center" [formGroup]="userClassForm">
+    <mat-radio-group
+            class="example-radio-group"
+            aria-label="Select an option" formControlName="userClass">
+        <mat-radio-button value="scientist"
+                          class="example-radio-button button-lg">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="science"></mat-icon>
+            Scientist</mat-radio-button>
+        <mat-radio-button value="enthusiast"
+                          class="example-radio-button button-lg">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="psychology"></mat-icon>
+            Enthusiast</mat-radio-button>
+    </mat-radio-group>
+</div>

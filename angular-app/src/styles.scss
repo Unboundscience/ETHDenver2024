@@ -109,6 +109,26 @@ $mat-dark-theme: mat.define-dark-theme((
   margin: variables.$margin-lg;
 }
 
+.button-lg {
+  padding: variables.$padding-lg !important;
+  .mdc-button__label, .mdc-label {
+    font-size: x-large;
+  }
+}
+
+.center {
+  // use flexbox to center this div
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  flex-direction: row;
+  padding: variables.$padding-md;
+}
+
+
+
 /** OVERRIDES **/
 body {
   margin: 0px;
@@ -122,11 +142,17 @@ button[disabled], .mat-mdc-button[disabled]  {
   cursor: not-allowed !important;
 }
 
-.button-lg {
-  padding: variables.$padding-lg !important;
-  .mdc-button__label {
-    font-size: x-large;
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  background-color: variables.$warn !important;
+  .mat-mdc-button:not(:disabled)  {
+    .mdc-button__label {
+      color: white;
+    }
+    background-color: variables.$med-blue !important;
   }
 }
+
+
+
 
 

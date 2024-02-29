@@ -1,4 +1,4 @@
-//@use '../../styles/_variables.scss' as variables;
+@use '../../styles/_variables.scss' as variables;
 .center {
 // use flexbox to center this div
     display: flex;
@@ -7,5 +7,5 @@
     height: 100%;
     width: 100%;
     flex-direction: row;
-    //padding: variables.$padding-lg;
+    padding: variables.$padding-md;
 }

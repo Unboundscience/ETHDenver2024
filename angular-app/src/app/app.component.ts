@@ -1,7 +1,6 @@
 import {Component, CUSTOM_ELEMENTS_SCHEMA, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import {GitcoinComponent} from "./features/toolbar/gitcoin/gitcoin.component";
 import {ActionButtonsComponent} from "./features/toolbar/action-buttons/action-buttons.component";
 import {Web3Service} from "./core/services/web3.service";
 import {MatButtonModule} from "@angular/material/button";
@@ -14,7 +13,6 @@ import {AlchemyService} from "./core/services/alchemy.service";
   imports: [CommonModule,
     MatButtonModule,
     RouterOutlet,
-    GitcoinComponent,
   ActionButtonsComponent],
   providers: [
     Web3Service,
