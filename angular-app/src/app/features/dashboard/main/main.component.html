@@ -7,7 +7,212 @@
 <!--      </app-breadcrumb>-->
     </div>
     }
+    <!-- Conversations -->
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+      <div class="header">
+        <h2>New Projects</h2>
+        <button mat-icon-button [matMenuTriggerFor]="menu" class="header-dropdown">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>add_circle_outline</mat-icon>
+            <span>Add</span>
+          </button>
+          <button mat-menu-item disabled>
+            <mat-icon>delete_outline</mat-icon>
+            <span>Delete</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>refresh</mat-icon>
+            <span>Refresh</span>
+          </button>
+        </mat-menu>
+      </div>
+      <div class="body">
+        <div id="new-orders" class="media-list position-relative">
+          <div class="table-responsive">
+            <table id="new-orders-table" class="table table-hover table-xl mb-0">
+              <thead>
+              <tr>
+                <th class="border-top-0">Proposal</th>
+                <th class="border-top-0">Group</th>
+                <th class="border-top-0">Participation</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td class="text-truncate">iPhone X</td>
+                <td class="text-truncate">
+                  <ul class="list-unstyled order-list">
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <span class="badge">+4</span>
+                    </li>
+                  </ul>
+                </td>
+                <td class="text-truncate">$8999</td>
+              </tr>
+              <tr>
+                <td class="text-truncate">Pixel 2</td>
+                <td class="text-truncate">
+                  <ul class="list-unstyled order-list">
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <span class="badge">+4</span>
+                    </li>
+                  </ul>
+                </td>
+                <td class="text-truncate">$5550</td>
+              </tr>
+              <tr>
+                <td class="text-truncate">OnePlus</td>
+                <td class="text-truncate">
+                  <ul class="list-unstyled order-list">
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <span class="badge">+4</span>
+                    </li>
+                  </ul>
+                </td>
+                <td class="text-truncate">$9000</td>
+              </tr>
+              <tr>
+                <td class="text-truncate">Galaxy</td>
+                <td class="text-truncate">
+                  <ul class="list-unstyled order-list">
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <span class="badge">+4</span>
+                    </li>
+                  </ul>
+                </td>
+                <td class="text-truncate">$7500</td>
+              </tr>
+              <tr>
+                <td class="text-truncate">Moto Z2</td>
+                <td class="text-truncate">
+                  <ul class="list-unstyled order-list">
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <span class="badge">+4</span>
+                    </li>
+                  </ul>
+                </td>
+                <td class="text-truncate">$8500</td>
+              </tr>
+              <tr>
+                <td class="text-truncate">iPhone X</td>
+                <td class="text-truncate">
+                  <ul class="list-unstyled order-list">
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <span class="badge">+4</span>
+                    </li>
+                  </ul>
+                </td>
+                <td class="text-truncate">$8999</td>
+              </tr>
+              <tr>
+                <td class="text-truncate">iPhone X</td>
+                <td class="text-truncate">
+                  <ul class="list-unstyled order-list">
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
+                    </li>
+                    <li class="avatar avatar-sm">
+                      <span class="badge">+4</span>
+                    </li>
+                  </ul>
+                </td>
+                <td class="text-truncate">$8999</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+
     <!-- Widgets -->
+    <div class="row clearfix">
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="box-part text-center">
+          <iframe src="https://www.youtube.com/embed/iiARfK-fxAU?si=wFrNCj5uRVCwiGxL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <a href="#" onClick="return false;">Learn More</a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="box-part text-center">
+          <iframe src="https://www.youtube.com/embed/JY20CGezkW8?si=1neJwIecaNhhaNIV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <a href="#" onClick="return false;">Learn More</a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="box-part text-center">
+          <iframe src="https://www.youtube.com/embed/zwvwce07jYE?si=VvW3PjO1Ap3mSW3k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <a href="#" onClick="return false;">Learn More</a>
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div class="col-lg-3 col-sm-6">
         <div class="counter-box text-center">
@@ -287,231 +492,9 @@
       <!-- #END# Task Info -->
       <!-- Browser Usage -->
       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-        <div class="card">
-          <div class="header">
-            <h2>New Projects</h2>
-            <button mat-icon-button [matMenuTriggerFor]="menu" class="header-dropdown">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item>
-                <mat-icon>add_circle_outline</mat-icon>
-                <span>Add</span>
-              </button>
-              <button mat-menu-item disabled>
-                <mat-icon>delete_outline</mat-icon>
-                <span>Delete</span>
-              </button>
-              <button mat-menu-item>
-                <mat-icon>refresh</mat-icon>
-                <span>Refresh</span>
-              </button>
-            </mat-menu>
-          </div>
-          <div class="body">
-            <div id="new-orders" class="media-list position-relative">
-              <div class="table-responsive">
-                <table id="new-orders-table" class="table table-hover table-xl mb-0">
-                  <thead>
-                    <tr>
-                      <th class="border-top-0">Product</th>
-                      <th class="border-top-0">Employees</th>
-                      <th class="border-top-0">Cost</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="text-truncate">iPhone X</td>
-                      <td class="text-truncate">
-                        <ul class="list-unstyled order-list">
-                          <li class="avatar avatar-sm">
-                            <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">
-                          </li>
-                          <li class="avatar avatar-sm">
-                            <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">
-                          </li>
-                          <li class="avatar avatar-sm">
-                            <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
-                          </li>
-                          <li class="avatar avatar-sm">
-                            <span class="badge">+4</span>
-                          </li>
-                        </ul>
-                      </td>
-                      <td class="text-truncate">$8999</td>
-                    </tr>
-                    <tr>
-                      <td class="text-truncate">Pixel 2</td>
-                      <td class="text-truncate">
-                        <ul class="list-unstyled order-list">
-                          <li class="avatar avatar-sm">
-                            <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">
-                          </li>
-                          <li class="avatar avatar-sm">
-                            <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">
-                          </li>
-                          <li class="avatar avatar-sm">
-                            <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
-                          </li>
-                          <li class="avatar avatar-sm">
-                            <span class="badge">+4</span>
-                          </li>
-                        </ul>
-                      </td>
-                      <td class="text-truncate">$5550</td>
-                    </tr>
-                    <tr>
-                      <td class="text-truncate">OnePlus</td>
-                      <td class="text-truncate">
-                        <ul class="list-unstyled order-list">
-                          <li class="avatar avatar-sm">
-                            <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">
-                          </li>
-                          <li class="avatar avatar-sm">
-                            <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">
-                          </li>
-                          <li class="avatar avatar-sm">
-                            <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
-                          </li>
-                          <li class="avatar avatar-sm">
-                            <span class="badge">+4</span>
-                          </li>
-                        </ul>
-                      </td>
-                      <td class="text-truncate">$9000</td>
-                    </tr>
-                    <tr>
-                      <td class="text-truncate">Galaxy</td>
-                      <td class="text-truncate">
-                        <ul class="list-unstyled order-list">
-                          <li class="avatar avatar-sm">
-                            <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">
-                          </li>
-                          <li class="avatar avatar-sm">
-                            <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">
-                          </li>
-                          <li class="avatar avatar-sm">
-                            <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
-                          </li>
-                          <li class="avatar avatar-sm">
-                            <span class="badge">+4</span>
-                          </li>
-                        </ul>
-                      </td>
-                      <td class="text-truncate">$7500</td>
-                    </tr>
-                    <tr>
-                      <td class="text-truncate">Moto Z2</td>
-                      <td class="text-truncate">
-                        <ul class="list-unstyled order-list">
-                          <li class="avatar avatar-sm">
-                            <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">
-                          </li>
-                          <li class="avatar avatar-sm">
-                            <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">
-                          </li>
-                          <li class="avatar avatar-sm">
-                            <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
-                          </li>
-                          <li class="avatar avatar-sm">
-                            <span class="badge">+4</span>
-                          </li>
-                        </ul>
-                      </td>
-                      <td class="text-truncate">$8500</td>
-                    </tr>
-                    <tr>
-                      <td class="text-truncate">iPhone X</td>
-                      <td class="text-truncate">
-                        <ul class="list-unstyled order-list">
-                          <li class="avatar avatar-sm">
-                            <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">
-                          </li>
-                          <li class="avatar avatar-sm">
-                            <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">
-                          </li>
-                          <li class="avatar avatar-sm">
-                            <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
-                          </li>
-                          <li class="avatar avatar-sm">
-                            <span class="badge">+4</span>
-                          </li>
-                        </ul>
-                      </td>
-                      <td class="text-truncate">$8999</td>
-                    </tr>
-                    <tr>
-                      <td class="text-truncate">iPhone X</td>
-                      <td class="text-truncate">
-                        <ul class="list-unstyled order-list">
-                          <li class="avatar avatar-sm">
-                            <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">
-                          </li>
-                          <li class="avatar avatar-sm">
-                            <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">
-                          </li>
-                          <li class="avatar avatar-sm">
-                            <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
-                          </li>
-                          <li class="avatar avatar-sm">
-                            <span class="badge">+4</span>
-                          </li>
-                        </ul>
-                      </td>
-                      <td class="text-truncate">$8999</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="card"></div>
       </div>
       <!-- #END# Browser Usage -->
-    </div>
-    <div class="row clearfix">
-      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-        <div class="box-part text-center">
-          <i class="fab fa-twitter fa-3x col-blue"></i>
-          <div class="title p-t-15">
-            <h5>Twitter</h5>
-          </div>
-          <div class="text p-b-10">
-            <span>Lorem ipsum dolor sit amet, id quo eruditi
-              eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui
-              ad.</span>
-          </div>
-          <a href="#" onClick="return false;">Learn More</a>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-        <div class="box-part text-center">
-          <i class="fab fa-instagram fa-3x col-red"></i>
-          <div class="title p-t-15">
-            <h5>Instagram</h5>
-          </div>
-          <div class="text p-b-10">
-            <span>Lorem ipsum dolor sit amet, id quo eruditi
-              eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui
-              ad.</span>
-          </div>
-          <a href="#" onClick="return false;">Learn More</a>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-        <div class="box-part text-center">
-          <i class="fab fa-facebook-f fa-3x col-blue"></i>
-          <div class="title p-t-15">
-            <h5>Facebook</h5>
-          </div>
-          <div class="text p-b-10">
-            <span>Lorem ipsum dolor sit amet, id quo eruditi
-              eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui
-              ad.</span>
-          </div>
-          <a href="#" onClick="return false;">Learn More</a>
-        </div>
-      </div>
     </div>
     <div class="row clearfix">
       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
