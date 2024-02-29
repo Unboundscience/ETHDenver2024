@@ -11,6 +11,7 @@ import {
     MatSnackBarModule,
     MatSnackBarVerticalPosition
 } from "@angular/material/snack-bar";
+import {UserAccountService} from "../shared/services/user-account.service";
 
 @Component({
     selector: 'app-sign-up-flow',
@@ -21,6 +22,9 @@ import {
         MatRadioModule,
         MatIconModule,
         MatSnackBarModule
+    ],
+    providers: [
+        UserAccountService
     ],
     templateUrl: './sign-up-flow.component.html',
     styleUrl: './sign-up-flow.component.scss'
@@ -33,7 +37,8 @@ export class SignUpFlowComponent implements OnInit {
 
     constructor(private fb: FormBuilder,
                 private router: Router,
-                private snackBarService: MatSnackBar) {
+                private snackBarService: MatSnackBar,
+                private userAccServ: UserAccountService) {
         this.userClassForm = this.fb.group({
             userClass: this.fb.control([], Validators.required)
         })
@@ -48,6 +53,7 @@ export class SignUpFlowComponent implements OnInit {
                     verticalPosition: this.verticalPosition,
                     duration: this.duration
                 });
+                this.userAccServ.setUser('userClass', formValue?.userClass);
                 this.router.navigate(['/profile']);
             });
     }
