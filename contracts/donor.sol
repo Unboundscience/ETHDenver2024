@@ -7,16 +7,15 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
 
-contract donorToken is ERC20, Ownable, ERC20Permit, ERC20Votes {
-    constructor(address initialOwner)
+contract donorToken is ERC20, ERC20Permit, ERC20Votes {
+    constructor()
         ERC20("UnboundScience", "UBSi")
-        Ownable(initialOwner)
         ERC20Permit("MyToken")
     {}
 
     address public vault=0x9Fa4aCC9991Fd81bd7023d4E2665F31d06332ea6;
 
-    function mint(address to, uint256 amount) public onlyOwner payable {
+    function mint(address to, uint256 amount) public payable {
         _mint(to, amount);
         payable(vault).transfer(msg.value); // Transfer ETH received to the vault
     }
