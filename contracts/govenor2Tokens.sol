@@ -4,18 +4,26 @@ pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+import "./ip.sol";
+import "./royalty.sol";
 
 contract UnboundGovernor {
     address votingToken;
     address nftContract;
-    constructor(address _votingToken, address _propNFT)
+    address IPContract;
+    constructor(address _votingToken, address _propNFT, address _ipContract, address _royaltyTokenAddress)
     {
         votingToken = _votingToken;
         nftContract = _propNFT;
+        IPContract = _ipContract;
+        royaltyTokenAddress = _royaltyTokenAddress;
     }
-
+    
     uint256 public proposalThreshold;
     uint256 public votingPeriod = 7200;
+     mapping(uint256 => uint256) public erc20TokenBalances; // Map token ID to corresponding ERC20 balance
+
+    address public royaltyTokenAddress; // Store address of the ERC20 token contract
 
     mapping(uint256 => Proposal) public proposals;
     mapping(address => mapping(uint256 => bool)) private votes;
@@ -77,18 +85,29 @@ contract UnboundGovernor {
     }
 
     // Function to execute a passed proposal (replace with actual implementation)
-    function execute(uint256 proposalId) public {
+    function execute(uint256 proposalId, address _to) public {
         require(block.number > proposals[proposalId].votingEnd, "Voting period is still ongoing");
         require(!proposals[proposalId].executed, "Proposal already executed");
         require(proposals[proposalId].forVotes >= quorum(), "Proposal did not pass");
         
+        address to = _to;
+        string memory title = proposals[proposalId].title;
+        string memory description = proposals[proposalId].description;
+        UnboundIP ipContract = UnboundIP(IPContract);
+        ipContract.safeMint(to, title, description);
         proposals[proposalId].executed = true;
+
+        // Access token ID from the proposal
+        uint256 tokenId = proposals[proposalId].tokenId;
+        RoyaltyToken royaltyToken = RoyaltyToken(royaltyTokenAddress);
+        royaltyToken.mint(to, 100); 
+        erc20TokenBalances[tokenId] = 100;
     }
 
 
     function quorum() view  internal returns (uint256) {
         uint256 totalSupply = IERC20(votingToken).totalSupply();
-        uint256 baseQuorum = 1; // Set a base quorum value
+        uint256 baseQuorum =  totalSupply / 100; // Set a base quorum value
         return baseQuorum;
     }
 
