@@ -78,7 +78,7 @@ dl {
 
 section {
   &.content {
-    margin: 70px 15px 0 276px;
+    margin: 70px 15px 0 15px;
     min-height: calc(100vh - 76px);
     @include transition(0.5s);
     .content-block {

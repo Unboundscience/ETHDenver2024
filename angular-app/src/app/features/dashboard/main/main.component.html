@@ -63,68 +63,68 @@
     </div>
     <!-- #END# Widgets -->
     <div class="row">
-      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-        <div class="card">
-          <div class="header">
-            <h2>Client Survay</h2>
-            <button mat-icon-button [matMenuTriggerFor]="menu" class="header-dropdown">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item>
-                <mat-icon>add_circle_outline</mat-icon>
-                <span>Add</span>
-              </button>
-              <button mat-menu-item disabled>
-                <mat-icon>delete_outline</mat-icon>
-                <span>Delete</span>
-              </button>
-              <button mat-menu-item>
-                <mat-icon>refresh</mat-icon>
-                <span>Refresh</span>
-              </button>
-            </mat-menu>
-          </div>
-          <div class="body">
-            <apx-chart [series]="areaChartOptions.series!" [chart]="areaChartOptions.chart!"
-              [xaxis]="areaChartOptions.xaxis!" [yaxis]="areaChartOptions.yaxis!" [colors]="areaChartOptions.colors!"
-              [stroke]="areaChartOptions.stroke!" [legend]="areaChartOptions.legend!" [grid]="areaChartOptions.grid!"
-              [tooltip]="areaChartOptions.tooltip!" [dataLabels]="areaChartOptions.dataLabels!"></apx-chart>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-        <div class="card">
-          <div class="header">
-            <h2>Project Status</h2>
-            <button mat-icon-button [matMenuTriggerFor]="menu" class="header-dropdown">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item>
-                <mat-icon>add_circle_outline</mat-icon>
-                <span>Add</span>
-              </button>
-              <button mat-menu-item disabled>
-                <mat-icon>delete_outline</mat-icon>
-                <span>Delete</span>
-              </button>
-              <button mat-menu-item>
-                <mat-icon>refresh</mat-icon>
-                <span>Refresh</span>
-              </button>
-            </mat-menu>
-          </div>
-          <div class="body">
-            <apx-chart [series]="barChartOptions.series!" [chart]="barChartOptions.chart!"
-              [dataLabels]="barChartOptions.dataLabels!" [plotOptions]="barChartOptions.plotOptions!"
-              [colors]="barChartOptions.colors!" [xaxis]="barChartOptions.xaxis!" [stroke]="barChartOptions.stroke!"
-              [fill]="barChartOptions.fill!" [yaxis]="barChartOptions.yaxis!" [title]="barChartOptions.title!"
-              [tooltip]="barChartOptions.tooltip!" [legend]="barChartOptions.legend!" [grid]="barChartOptions.grid!">
-            </apx-chart>
-          </div>
-        </div>
-      </div>
+<!--      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">-->
+<!--        <div class="card">-->
+<!--          <div class="header">-->
+<!--            <h2>Client Survay</h2>-->
+<!--            <button mat-icon-button [matMenuTriggerFor]="menu" class="header-dropdown">-->
+<!--              <mat-icon>more_vert</mat-icon>-->
+<!--            </button>-->
+<!--            <mat-menu #menu="matMenu">-->
+<!--              <button mat-menu-item>-->
+<!--                <mat-icon>add_circle_outline</mat-icon>-->
+<!--                <span>Add</span>-->
+<!--              </button>-->
+<!--              <button mat-menu-item disabled>-->
+<!--                <mat-icon>delete_outline</mat-icon>-->
+<!--                <span>Delete</span>-->
+<!--              </button>-->
+<!--              <button mat-menu-item>-->
+<!--                <mat-icon>refresh</mat-icon>-->
+<!--                <span>Refresh</span>-->
+<!--              </button>-->
+<!--            </mat-menu>-->
+<!--          </div>-->
+<!--          <div class="body">-->
+<!--            <apx-chart [series]="areaChartOptions.series!" [chart]="areaChartOptions.chart!"-->
+<!--              [xaxis]="areaChartOptions.xaxis!" [yaxis]="areaChartOptions.yaxis!" [colors]="areaChartOptions.colors!"-->
+<!--              [stroke]="areaChartOptions.stroke!" [legend]="areaChartOptions.legend!" [grid]="areaChartOptions.grid!"-->
+<!--              [tooltip]="areaChartOptions.tooltip!" [dataLabels]="areaChartOptions.dataLabels!"></apx-chart>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">-->
+<!--        <div class="card">-->
+<!--          <div class="header">-->
+<!--            <h2>Project Status</h2>-->
+<!--            <button mat-icon-button [matMenuTriggerFor]="menu" class="header-dropdown">-->
+<!--              <mat-icon>more_vert</mat-icon>-->
+<!--            </button>-->
+<!--            <mat-menu #menu="matMenu">-->
+<!--              <button mat-menu-item>-->
+<!--                <mat-icon>add_circle_outline</mat-icon>-->
+<!--                <span>Add</span>-->
+<!--              </button>-->
+<!--              <button mat-menu-item disabled>-->
+<!--                <mat-icon>delete_outline</mat-icon>-->
+<!--                <span>Delete</span>-->
+<!--              </button>-->
+<!--              <button mat-menu-item>-->
+<!--                <mat-icon>refresh</mat-icon>-->
+<!--                <span>Refresh</span>-->
+<!--              </button>-->
+<!--            </mat-menu>-->
+<!--          </div>-->
+<!--          <div class="body">-->
+<!--            <apx-chart [series]="barChartOptions.series!" [chart]="barChartOptions.chart!"-->
+<!--              [dataLabels]="barChartOptions.dataLabels!" [plotOptions]="barChartOptions.plotOptions!"-->
+<!--              [colors]="barChartOptions.colors!" [xaxis]="barChartOptions.xaxis!" [stroke]="barChartOptions.stroke!"-->
+<!--              [fill]="barChartOptions.fill!" [yaxis]="barChartOptions.yaxis!" [title]="barChartOptions.title!"-->
+<!--              [tooltip]="barChartOptions.tooltip!" [legend]="barChartOptions.legend!" [grid]="barChartOptions.grid!">-->
+<!--            </apx-chart>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
     </div>
     <div class="row clearfix">
       <!-- Task Info -->

@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 // import { BreadcrumbComponent } from '../../shared/components/breadcrumb/breadcrumb.component';
 import { allIcons } from 'angular-feather/icons';
 import {FeatherIconsComponent} from "../../shared/components/feather-icons/feather-icons.component";
+import {UserAccountService} from "../../shared/services/user-account.service";
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -46,6 +47,8 @@ export class MainComponent implements OnInit {
   public smallColumnChart!: Partial<ChartOptions>;
   public smallLineChart!: Partial<ChartOptions>;
 
+  public userClass: 'scientist' | 'enthusiast' | undefined;
+
   public sampleData = [
     31, 40, 28, 44, 60, 55, 68, 51, 42, 85, 77, 31, 40, 28, 44, 60, 55,
   ];
@@ -57,11 +60,12 @@ export class MainComponent implements OnInit {
       active: 'Dashboard',
     },
   ];
-  constructor() {
-    //constructor
+  constructor(private userAccountService: UserAccountService) {
+    this.userClass = undefined;
   }
 
   ngOnInit() {
+    this.userClass = this.userAccountService.getCurrentUser();
     this.cardChart1();
     this.cardChart2();
     this.cardChart3();
