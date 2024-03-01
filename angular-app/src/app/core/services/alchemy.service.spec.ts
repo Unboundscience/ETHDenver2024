@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AlchemyService } from './alchemy.service';
+import { ViemService } from './viem.service';
 
 describe('AlchemyService', () => {
-  let service: AlchemyService;
+  let service: ViemService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AlchemyService);
+    service = TestBed.inject(ViemService);
   });
 
   it('should be created', () => {

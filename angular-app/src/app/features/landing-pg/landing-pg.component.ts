@@ -8,7 +8,7 @@ import {
     MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 import {Router} from "@angular/router";
-import {AlchemyService, NftApiDto} from "../../core/services/alchemy.service";
+import {ViemService, NftApiDto} from "../../core/services/viem.service";
 import {environment} from "../../../environments/environment";
 
 @Component({
@@ -19,7 +19,7 @@ import {environment} from "../../../environments/environment";
         MatButtonModule
     ],
     providers: [
-        AlchemyService,
+        ViemService,
         Web3Service
     ],
     templateUrl: './landing-pg.component.html',
@@ -39,7 +39,7 @@ export class LandingPgComponent {
     constructor(private web3Service: Web3Service,
                 private snackBarService: MatSnackBar,
                 private router: Router,
-                private alchemyService: AlchemyService) {
+                private alchemyService: ViemService) {
     }
 
     login(): void {
@@ -53,22 +53,22 @@ export class LandingPgComponent {
         if (this.isWalletConnected()) {
             const walletOwnerAddres = this.web3Service.getAccountOnce();
             //check for nft in the wallet
-            this.alchemyService.getNftsForOwner(walletOwnerAddres?.address).then((nfts) => {
+
                 this.openSnackBar('Checking Your Access...');
                 setTimeout(() => {
                     // if they have the nft go to the dashboard
-                    if (this.hasRequiredNft(nfts)) {
+                    // if (this.hasRequiredNft(nfts)) {
                         this.openSnackBar('Access Verified...');
                         setTimeout(() => {
                             this.router.navigate(['/dashboard']);
                         }, 750);
                         // if not, send them to create a profile and mint an nft
-                    } else {
-                        this.openSnackBar(nextStepLabelMap['sign-up']);
-                        this.router.navigate(['/sign-up']);
-                    }
+                    // } else {
+                    //     this.openSnackBar(nextStepLabelMap['sign-up']);
+                    //     this.router.navigate(['/sign-up']);
+                    // }
                 }, 1000);
-            });
+
         } else {
             this.openSnackBar(nextStepLabelMap['connect-wallet']);
         }

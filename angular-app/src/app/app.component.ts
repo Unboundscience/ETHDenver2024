@@ -5,7 +5,7 @@ import {ActionButtonsComponent} from "./features/toolbar/action-buttons/action-b
 import {Web3Service} from "./core/services/web3.service";
 import {MatButtonModule} from "@angular/material/button";
 import {Observable} from "rxjs";
-import {AlchemyService} from "./core/services/alchemy.service";
+import {ViemService} from "./core/services/viem.service";
 import {UserAccountService} from "./features/shared/services/user-account.service";
 
 @Component({
@@ -20,7 +20,7 @@ import {UserAccountService} from "./features/shared/services/user-account.servic
   ],
   providers: [
     Web3Service,
-    AlchemyService,
+    ViemService,
     UserAccountService
   ],
   templateUrl: './app.component.html',
@@ -29,21 +29,18 @@ import {UserAccountService} from "./features/shared/services/user-account.servic
 })
 export class AppComponent implements OnInit {
   title = 'angular-app';
-  latestBlock$: Observable<any>;
   account: any;
 
   constructor(public web3Service: Web3Service,
-              private alchemyService: AlchemyService,
+              private viemService: ViemService,
               private userAccountService: UserAccountService,
              @Inject(DOCUMENT) private document: Document,
             private renderer: Renderer2,
   ) {
-    this.latestBlock$ = this.alchemyService.getLatestBlock();
     this.account = null;
   }
 
   ngOnInit() {
-    this.latestBlock$.subscribe((latest) => console.log(latest));
     this.account = this.web3Service.getAccountOnce();
     this.setDarkTheme();
   }

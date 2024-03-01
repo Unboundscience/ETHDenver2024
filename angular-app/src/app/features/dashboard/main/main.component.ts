@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { CreateProposalComponent } from '../../proposals/create-proposal/create-proposal.component';
 import { FileUploadComponent } from '../../shared/components/file-upload/file-upload.component';
 import {NgChartsModule} from "ng2-charts";
+import {ViemService} from "../../../core/services/viem.service";
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -75,11 +76,21 @@ export class MainComponent implements OnInit {
       active: 'Dashboard',
     },
   ];
-  constructor(public userAccountService: UserAccountService) {
+  constructor(public userAccountService: UserAccountService,
+              public viemSercice: ViemService) {
     this.userAccount = undefined;
   }
 
   ngOnInit() {
+    this.viemSercice.init().then(() => {
+        console.log('init success');
+        this.viemSercice.getDonorTotalSupply().then((resp) => {
+          console.log('ping success', resp);
+        });
+    });
+    this.viemSercice.getDonorTotalSupply().then((resp) => {
+        console.log('ping success', resp);
+    });
     this.userAccount = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') as string) : undefined;
     this.cardChart1();
     this.cardChart2();
