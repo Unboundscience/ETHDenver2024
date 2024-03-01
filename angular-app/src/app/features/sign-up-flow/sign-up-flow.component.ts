@@ -45,16 +45,20 @@ export class SignUpFlowComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.userClassForm.valueChanges
+        this.userClassForm.get('userClass')?.valueChanges
             .pipe(distinctUntilChanged())
             .subscribe((formValue) => {
-                this.snackBarService.open(`Let's get your info ${formValue['userClass'].toUpperCase()}`, '', {
+                this.snackBarService.open(`Let's get your info ${formValue.toUpperCase()}`, '', {
                     horizontalPosition: this.horizontalPosition,
                     verticalPosition: this.verticalPosition,
                     duration: this.duration
                 });
-                this.userAccServ.setUser('userClass', formValue?.userClass);
-                this.router.navigate(['/profile']);
+                this.userAccServ.setUserProp('userClass', formValue);
+                setTimeout(() => {
+                    this.router.navigate(['/dashboard']);
+                }, 750);
             });
+
+
     }
 }

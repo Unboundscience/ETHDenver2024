@@ -5,6 +5,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +17,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              private router: Router) {
     this.profileForm = this.fb.group({
       fname: ['', Validators.required],
       lname: [''],
@@ -28,7 +30,7 @@ export class ProfileComponent implements OnInit {
   }
 
   submit(): void {
-    console.log(this.profileForm.getRawValue());
+   this.router.navigate(['/dashboard']);
   }
 
 

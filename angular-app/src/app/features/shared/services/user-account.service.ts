@@ -1,19 +1,33 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
-@Injectable({
-    providedIn: 'root'
-})
+export interface UserAccount {
+    id?: string;
+    username?: string;
+    email?: string;
+    userClass: string;
+}
+
+@Injectable({ providedIn: 'root' })
 export class UserAccountService {
-    currentUser: any;
+    private userSubject = new BehaviorSubject<any>({});
+    user$: Observable<UserAccount>;
+
     constructor() {
-      this.currentUser = {};
+        this.user$ = this.userSubject.asObservable();
     }
 
-    setUser(prop: string, value: string): void {
-      this.currentUser[prop] = value;
+    public setUser(user: UserAccount): void {
+        // this.userSubject.next(user);
+        localStorage.setItem('user', JSON.stringify(user));
     }
 
-    getCurrentUser(): any {
-        return this.currentUser;
+    public setUserProp(prop: string, value: string): void {
+        const upd = { ...this.userSubject.getValue(), [prop]: value };
+        localStorage.setItem('user', JSON.stringify(upd));
+    }
+
+    public getUser(): UserAccount | null {
+        return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') as string) : null;
     }
 }

@@ -112,6 +112,7 @@ $mat-dark-theme: mat.define-dark-theme((
 .button-lg {
   padding: variables.$padding-lg !important;
   .mdc-button__label, .mdc-label {
+    color: variables.$white;
     font-size: x-large;
   }
 }

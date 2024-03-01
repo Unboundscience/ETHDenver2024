@@ -6,10 +6,11 @@ import { MatButtonModule } from '@angular/material/button';
 // import { BreadcrumbComponent } from '../../shared/components/breadcrumb/breadcrumb.component';
 import { allIcons } from 'angular-feather/icons';
 import {FeatherIconsComponent} from "../../shared/components/feather-icons/feather-icons.component";
-import {UserAccountService} from "../../shared/services/user-account.service";
+import {UserAccount, UserAccountService} from "../../shared/services/user-account.service";
 import { CommonModule } from '@angular/common';
 import { CreateProposalComponent } from '../../proposals/create-proposal/create-proposal.component';
 import { FileUploadComponent } from '../../shared/components/file-upload/file-upload.component';
+import {NgChartsModule} from "ng2-charts";
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -42,7 +43,8 @@ export type ChartOptions = {
         MatIconModule,
         FeatherIconsComponent,
         CreateProposalComponent,
-        FileUploadComponent
+        FileUploadComponent,
+        NgChartsModule
     ],
 })
 export class MainComponent implements OnInit {
@@ -52,8 +54,10 @@ export class MainComponent implements OnInit {
   public smallAreaChart!: Partial<ChartOptions>;
   public smallColumnChart!: Partial<ChartOptions>;
   public smallLineChart!: Partial<ChartOptions>;
-
-  public userClass: 'scientist' | 'enthusiast' | undefined = 'scientist';
+  userAccount: UserAccount | undefined;
+  // public pieChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
+  // public pieChartData:ChartData<any, any[], string>|undefined =
+  // public pieChartType:string = 'pie';
 
   public sampleDataUp1 = [
     2, 6, 4, 10, 16, 25, 19, 51, 42, 85, 77, 66, 78, 82, 94, 90, 98,
@@ -71,12 +75,12 @@ export class MainComponent implements OnInit {
       active: 'Dashboard',
     },
   ];
-  constructor(private userAccountService: UserAccountService) {
-    this.userClass = undefined;
+  constructor(public userAccountService: UserAccountService) {
+    this.userAccount = undefined;
   }
 
   ngOnInit() {
-    this.userClass = this.userAccountService.getCurrentUser();
+    this.userAccount = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') as string) : undefined;
     this.cardChart1();
     this.cardChart2();
     this.cardChart3();

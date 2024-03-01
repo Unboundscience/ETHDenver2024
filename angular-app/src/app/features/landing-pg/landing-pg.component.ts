@@ -30,7 +30,7 @@ export class LandingPgComponent {
     verticalPosition: MatSnackBarVerticalPosition = 'top';
     duration = 1200;
 
-    readonly NFT_ACCESS_CONTRACT = '0x2f98ed540467ffAb3841Aa8B0bBe175bA85DbdF9';
+    readonly NFT_ACCESS_CONTRACT = ''; //environment.NFT_ACCESS_CONTRACT;
     // isConnected: boolean;
     // isConnecting: boolean;
     // isDisconnected: boolean;
@@ -47,7 +47,7 @@ export class LandingPgComponent {
         const nextStepLabelMap = {
             'connect-wallet': 'Please connect your wallet -->',
             'check-nft': 'Checking for NFT...',
-            'sign-up': 'Let\'s Sign You Up!'
+            'sign-up': 'Let\'s Sign You Up! User would be redirected to sign-up page...'
         };
 
         if (this.isWalletConnected()) {
