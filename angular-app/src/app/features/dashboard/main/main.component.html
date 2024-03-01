@@ -336,7 +336,7 @@
       <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
         <div class="card">
           <div class="header">
-            <h2>Clients Details</h2>
+            <h2>My Proposals</h2>
             <button mat-icon-button [matMenuTriggerFor]="menu" class="header-dropdown">
               <mat-icon>more_vert</mat-icon>
             </button>
@@ -361,11 +361,11 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Email</th>
+                    <th>Title</th>
+                    <th>Pool</th>
                     <th>Status</th>
-                    <th>Project Name</th>
-                    <th>Action</th>
+                    <th>Votes</th>
+                    <th>Edit/Remove</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -373,12 +373,12 @@
                     <td class="table-img">
                       <img src="assets/images/user/user1.jpg" alt="">
                     </td>
-                    <td>John Doe</td>
-                    <td>xyz&#64;email.com</td>
+                    <td>Elevator Air Turbines</td>
+                    <td>Energy</td>
                     <td>
                       <span class="badge col-green shadow-style">Active</span>
                     </td>
-                    <td>ERP System</td>
+                    <td>675</td>
                     <td>
                       <button mat-icon-button class="tbl-action-btn">
                         <app-feather-icons [icon]="'edit'" [class]="'tbl-fav-edit'"></app-feather-icons>
@@ -392,12 +392,12 @@
                     <td class="table-img">
                       <img src="assets/images/user/user2.jpg" alt="">
                     </td>
-                    <td>Sarah Smith</td>
-                    <td>xyz&#64;email.com</td>
+                    <td>GMO Water Efficient Crops</td>
+                    <td>Food Technology</td>
                     <td>
-                      <span class="badge col-red shadow-style">Inactive</span>
+                      <span class="badge col-red shadow-style">Canceled</span>
                     </td>
-                    <td>Abc Website</td>
+                    <td>32</td>
                     <td>
                       <button mat-icon-button class="tbl-action-btn">
                         <app-feather-icons [icon]="'edit'" [class]="'tbl-fav-edit'"></app-feather-icons>
@@ -411,12 +411,12 @@
                     <td class="table-img">
                       <img src="assets/images/user/user3.jpg" alt="">
                     </td>
-                    <td>Airi Satou</td>
-                    <td>xyz&#64;email.com</td>
+                    <td>Smoke Stack Filters</td>
+                    <td>Pollution</td>
                     <td>
                       <span class="badge col-green shadow-style">Active</span>
                     </td>
-                    <td>Android App</td>
+                    <td>453</td>
                     <td>
                       <button mat-icon-button class="tbl-action-btn">
                         <app-feather-icons [icon]="'edit'" [class]="'tbl-fav-edit'"></app-feather-icons>
@@ -430,12 +430,12 @@
                     <td class="table-img">
                       <img src="assets/images/user/user4.jpg" alt="">
                     </td>
-                    <td>Angelica Ramos</td>
-                    <td>xyz&#64;email.com</td>
+                    <td>Plastic Recycling Tech</td>
+                    <td>Pollution</td>
                     <td>
                       <span class="badge col-green shadow-style">Active</span>
                     </td>
-                    <td>Ios App</td>
+                    <td>321</td>
                     <td>
                       <button mat-icon-button class="tbl-action-btn">
                         <app-feather-icons [icon]="'edit'" [class]="'tbl-fav-edit'"></app-feather-icons>
@@ -449,12 +449,12 @@
                     <td class="table-img">
                       <img src="assets/images/user/user5.jpg" alt="">
                     </td>
-                    <td>Ashton Cox</td>
-                    <td>xyz&#64;email.com</td>
+                    <td>Whale Batteries</td>
+                    <td>Energy</td>
                     <td>
-                      <span class="badge col-red shadow-style">Inactive</span>
+                      <span class="badge col-red shadow-style">Unsuccessful</span>
                     </td>
-                    <td>Java Website</td>
+                    <td>28</td>
                     <td>
                       <button mat-icon-button class="tbl-action-btn">
                         <app-feather-icons [icon]="'edit'" [class]="'tbl-fav-edit'"></app-feather-icons>
@@ -465,24 +465,6 @@
                     </td>
                   </tr>
                   <tr>
-                    <td class="table-img">
-                      <img src="assets/images/user/user6.jpg" alt="">
-                    </td>
-                    <td>Cara Stevens</td>
-                    <td>xyz&#64;email.com</td>
-                    <td>
-                      <span class="badge col-green shadow-style">Active</span>
-                    </td>
-                    <td>Desktop App</td>
-                    <td>
-                      <button mat-icon-button class="tbl-action-btn">
-                        <app-feather-icons [icon]="'edit'" [class]="'tbl-fav-edit'"></app-feather-icons>
-                      </button>
-                      <button mat-icon-button class="tbl-action-btn">
-                        <app-feather-icons [icon]="'trash-2'" [class]="'tbl-fav-delete'"></app-feather-icons>
-                      </button>
-                    </td>
-                  </tr>
                 </tbody>
               </table>
             </div>
