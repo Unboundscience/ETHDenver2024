@@ -5,7 +5,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
-import {AlchemyService} from "../../../core/services/alchemy.service";
+import {ViemService} from "../../../core/services/viem.service";
 import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from "@angular/material/snack-bar";
 
 @Component({
@@ -29,7 +29,7 @@ export class CreateProposalComponent {
     createProposalForm: FormGroup;
 
     constructor(private fb: FormBuilder,
-                private alchemyService: AlchemyService,
+                private alchemyService: ViemService,
                 private snackBarService: MatSnackBar) {
         this.createProposalForm = this.fb.group({
             title: this.fb.control([], Validators.required),
