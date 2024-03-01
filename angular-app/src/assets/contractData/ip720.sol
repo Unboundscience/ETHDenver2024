@@ -45,4 +45,8 @@ contract UnboundIP is ERC721, Ownable {
         require(mintedTokens[tokenId], "Token ID does not exist");
         return tokenMetadata[tokenId];
     }
+
+    function ping() public pure returns (string memory) {
+        return "Pong!";
+    }
 }

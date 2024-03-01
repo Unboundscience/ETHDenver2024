@@ -15,13 +15,18 @@ contract ScientistToken is ERC721, Ownable {
 
       mapping(address => bool) public isScientist;
 
-    function mint(address to, uint256 amount) public {
-        _mint(to, amount);
+    function mint(address to) public {
+        uint256 tokenId = _nextTokenId++;
+        _safeMint(to, tokenId);
         isScientist[to] = true;
     }
 
     function getIsScientist(address addr) public view returns (bool) {
     return isScientist[addr];
+    }
+
+    function ping() public pure returns (string memory) {
+    return "Pong!";
     }
 
 }
