@@ -1,6 +1,6 @@
 
-# import requests # the requests library can retrieve the content of the microgrants website page
-# from bs4 import BeautifulSoup # BeautifulSoup can parse the fetched HTML content and extract the information we need
+import requests # the requests library can retrieve the content of the microgrants website page
+from bs4 import BeautifulSoup # BeautifulSoup can parse the fetched HTML content and extract the information we need
 import re # regular expression for filtering text
 import selenium
 
