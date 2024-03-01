@@ -7,12 +7,123 @@
 <!--      </app-breadcrumb>-->
     </div>
     }
+    <!-- Enthusiast stats -->
+    <div class="row" *ngIf="userClass === 'enthusiast'">
+      <div class="col-lg-3 col-sm-6">
+        <div class="counter-box text-center">
+          <div class="text font-16 m-b-5">Total Income</div>
+          <h4 class="m-b-10">$758
+            <i class="material-icons col-green">trending_up</i>
+          </h4>
+          <div class="apex-chart-center">
+            <apx-chart [series]="smallBarChart.series!" [chart]="smallBarChart.chart!"
+                       [plotOptions]="smallBarChart.plotOptions!" [tooltip]="smallBarChart.tooltip!">
+            </apx-chart>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="counter-box text-center">
+          <div class="text font-16 m-b-5">Engagement</div>
+          <h4 class="m-b-10">80%
+            <i class="material-icons col-red">trending_up</i>
+          </h4>
+          <div class="apex-chart-center">
+            <apx-chart [series]="smallAreaChart.series!" [chart]="smallAreaChart.chart!"
+                       [stroke]="smallAreaChart.stroke!" [yaxis]="smallAreaChart.yaxis!" [fill]="smallAreaChart.fill!"
+                       [colors]="smallAreaChart.colors!" [tooltip]="smallAreaChart.tooltip!"></apx-chart>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="counter-box text-center">
+          <div class="text font-16 m-b-5">Total Sales</div>
+          <h4 class="m-b-10">956
+            <i class="material-icons col-green">trending_up</i>
+          </h4>
+          <div class="apex-chart-center">
+            <apx-chart [series]="smallColumnChart.series!" [chart]="smallColumnChart.chart!"
+                       [plotOptions]="smallColumnChart.plotOptions!" [tooltip]="smallColumnChart.tooltip!">
+            </apx-chart>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="counter-box text-center">
+          <div class="text font-16 m-b-5">Conversations</div>
+          <h4 class="m-b-10">21
+            <i class="material-icons col-red">trending_up</i>
+          </h4>
+          <div class="apex-chart-center">
+            <apx-chart [series]="smallLineChart.series!" [chart]="smallLineChart.chart!"
+                       [stroke]="smallLineChart.stroke!" [tooltip]="smallLineChart.tooltip!"></apx-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-lg-3 col-sm-6">
+        <div class="counter-box text-center">
+          <div class="text font-16 m-b-5">Active Proposals</div>
+          <h4 class="m-b-10">9
+            <i class="material-icons col-red">trending_up</i>
+          </h4>
+          <div class="apex-chart-center">
+            <apx-chart [series]="smallAreaChart.series!" [chart]="smallAreaChart.chart!"
+                       [stroke]="smallAreaChart.stroke!" [yaxis]="smallAreaChart.yaxis!" [fill]="smallAreaChart.fill!"
+                       [colors]="smallAreaChart.colors!" [tooltip]="smallAreaChart.tooltip!"></apx-chart>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="counter-box text-center">
+          <div class="text font-16 m-b-5">Funding Granted</div>
+          <h4 class="m-b-10">$75,000
+            <i class="material-icons col-green">trending_up</i>
+          </h4>
+          <div class="apex-chart-center">
+            <apx-chart [series]="smallColumnChart.series!" [chart]="smallColumnChart.chart!"
+                       [plotOptions]="smallColumnChart.plotOptions!" [tooltip]="smallColumnChart.tooltip!">
+            </apx-chart>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="counter-box text-center">
+          <div class="text font-16 m-b-5">Funding Outstanding</div>
+          <h4 class="m-b-10">$1.2M
+            <i class="material-icons col-red">trending_up</i>
+          </h4>
+          <div class="apex-chart-center">
+            <apx-chart [series]="smallLineChart.series!" [chart]="smallLineChart.chart!"
+                       [stroke]="smallLineChart.stroke!" [tooltip]="smallLineChart.tooltip!"></apx-chart>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="counter-box text-center">
+          <div class="text font-16 m-b-5">Community Engagement</div>
+          <h4 class="m-b-10">89%
+            <i class="material-icons col-green">trending_up</i>
+          </h4>
+          <div class="apex-chart-center">
+            <apx-chart [series]="smallBarChart.series!" [chart]="smallBarChart.chart!"
+                       [plotOptions]="smallBarChart.plotOptions!" [tooltip]="smallBarChart.tooltip!">
+            </apx-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <!-- Conversations -->
     <div class="row clearfix">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
       <div class="header">
-        <h2>New Projects</h2>
+        <h2>Conversations</h2>
         <button mat-icon-button [matMenuTriggerFor]="menu" class="header-dropdown">
           <mat-icon>more_vert</mat-icon>
         </button>
@@ -39,12 +150,14 @@
               <tr>
                 <th class="border-top-0">Proposal</th>
                 <th class="border-top-0">Group</th>
-                <th class="border-top-0">Participation</th>
+                <th class="border-top-0">Quorum Progress</th>
+                <th class="border-top-0"></th>
+                <th class="border-top-0">Actions</th>
               </tr>
               </thead>
               <tbody>
               <tr>
-                <td class="text-truncate">iPhone X</td>
+                <td class="text-truncate">Harvest Kinetic Energy from Air</td>
                 <td class="text-truncate">
                   <ul class="list-unstyled order-list">
                     <li class="avatar avatar-sm">
@@ -57,34 +170,62 @@
                       <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
                     </li>
                     <li class="avatar avatar-sm">
-                      <span class="badge">+4</span>
+                      <span class="badge">+6</span>
                     </li>
                   </ul>
                 </td>
-                <td class="text-truncate">$8999</td>
+                <td class="text-truncate">
+                  <div class="mb-2">
+                    <span class="progress-label">5 days remaining</span>
+                    <span class="float-end">&#x2002;Votes</span>
+                    <span class="float-end progress-percent label label-info m-b-5">76 / 100</span>
+                  </div>
+                  <div class="progress skill-progress m-b-20 w-100">
+                    <div class="progress-bar l-bg-green width-per-75" role="progressbar" aria-valuenow="45"
+                         aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                <td></td>
+                <td>
+                  <a class="link">Join Discussion</a>
+                </td>
               </tr>
               <tr>
-                <td class="text-truncate">Pixel 2</td>
+                <td class="text-truncate">Increasing crop yield</td>
                 <td class="text-truncate">
                   <ul class="list-unstyled order-list">
                     <li class="avatar avatar-sm">
-                      <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">
+                      <img class="rounded-circle" src="/assets/images/user/user1.jpg" alt="user">
                     </li>
                     <li class="avatar avatar-sm">
-                      <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">
+                      <img class="rounded-circle" src="/assets/images/user/user2.jpg" alt="user">
                     </li>
                     <li class="avatar avatar-sm">
-                      <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
+                      <img class="rounded-circle" src="/assets/images/user/user3.jpg" alt="user">
                     </li>
                     <li class="avatar avatar-sm">
                       <span class="badge">+4</span>
                     </li>
                   </ul>
                 </td>
-                <td class="text-truncate">$5550</td>
+                <td class="text-truncate">
+                  <div class="mb-2">
+                    <span class="progress-label">2 days remaining</span>
+                    <span class="float-end">&#x2002;Votes</span>
+                    <span class="float-end progress-percent label label-danger m-b-5">17 / 100</span>
+                  </div>
+                  <div class="progress skill-progress m-b-20 w-100">
+                    <div class="progress-bar l-bg-red width-per-17" role="progressbar" aria-valuenow="45"
+                         aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                <td></td>
+                <td>
+                  <a class="link">Join Discussion</a>
+                </td>
               </tr>
               <tr>
-                <td class="text-truncate">OnePlus</td>
+                <td class="text-truncate">Reducing Carbon Emissions Through Sequestration</td>
                 <td class="text-truncate">
                   <ul class="list-unstyled order-list">
                     <li class="avatar avatar-sm">
@@ -97,92 +238,106 @@
                       <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
                     </li>
                     <li class="avatar avatar-sm">
-                      <span class="badge">+4</span>
+                      <span class="badge">+2</span>
                     </li>
                   </ul>
                 </td>
-                <td class="text-truncate">$9000</td>
-              </tr>
-              <tr>
-                <td class="text-truncate">Galaxy</td>
                 <td class="text-truncate">
-                  <ul class="list-unstyled order-list">
-                    <li class="avatar avatar-sm">
-                      <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">
-                    </li>
-                    <li class="avatar avatar-sm">
-                      <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">
-                    </li>
-                    <li class="avatar avatar-sm">
-                      <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
-                    </li>
-                    <li class="avatar avatar-sm">
-                      <span class="badge">+4</span>
-                    </li>
-                  </ul>
+                  <div class="mb-2">
+                    <span class="progress-label">10 Days Remaining</span>
+                    <span class="float-end">&#x2002;Votes</span>
+                    <span class="float-end progress-percent label label-warning m-b-5">25 / 100</span>
+                  </div>
+                  <div class="progress skill-progress m-b-20 w-100">
+                    <div class="progress-bar l-bg-orange width-per-25" role="progressbar" aria-valuenow="25"
+                         aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
                 </td>
-                <td class="text-truncate">$7500</td>
-              </tr>
-              <tr>
-                <td class="text-truncate">Moto Z2</td>
-                <td class="text-truncate">
-                  <ul class="list-unstyled order-list">
-                    <li class="avatar avatar-sm">
-                      <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">
-                    </li>
-                    <li class="avatar avatar-sm">
-                      <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">
-                    </li>
-                    <li class="avatar avatar-sm">
-                      <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
-                    </li>
-                    <li class="avatar avatar-sm">
-                      <span class="badge">+4</span>
-                    </li>
-                  </ul>
+                <td></td>
+                <td>
+                  <a class="link">Join Discussion</a>
                 </td>
-                <td class="text-truncate">$8500</td>
               </tr>
-              <tr>
-                <td class="text-truncate">iPhone X</td>
-                <td class="text-truncate">
-                  <ul class="list-unstyled order-list">
-                    <li class="avatar avatar-sm">
-                      <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">
-                    </li>
-                    <li class="avatar avatar-sm">
-                      <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">
-                    </li>
-                    <li class="avatar avatar-sm">
-                      <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
-                    </li>
-                    <li class="avatar avatar-sm">
-                      <span class="badge">+4</span>
-                    </li>
-                  </ul>
-                </td>
-                <td class="text-truncate">$8999</td>
-              </tr>
-              <tr>
-                <td class="text-truncate">iPhone X</td>
-                <td class="text-truncate">
-                  <ul class="list-unstyled order-list">
-                    <li class="avatar avatar-sm">
-                      <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">
-                    </li>
-                    <li class="avatar avatar-sm">
-                      <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">
-                    </li>
-                    <li class="avatar avatar-sm">
-                      <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">
-                    </li>
-                    <li class="avatar avatar-sm">
-                      <span class="badge">+4</span>
-                    </li>
-                  </ul>
-                </td>
-                <td class="text-truncate">$8999</td>
-              </tr>
+<!--              <tr>-->
+<!--                <td class="text-truncate">Galaxy</td>-->
+<!--                <td class="text-truncate">-->
+<!--                  <ul class="list-unstyled order-list">-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <span class="badge">+4</span>-->
+<!--                    </li>-->
+<!--                  </ul>-->
+<!--                </td>-->
+<!--                <td class="text-truncate">$7500</td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="text-truncate">Moto Z2</td>-->
+<!--                <td class="text-truncate">-->
+<!--                  <ul class="list-unstyled order-list">-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <span class="badge">+4</span>-->
+<!--                    </li>-->
+<!--                  </ul>-->
+<!--                </td>-->
+<!--                <td class="text-truncate">$8500</td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="text-truncate">iPhone X</td>-->
+<!--                <td class="text-truncate">-->
+<!--                  <ul class="list-unstyled order-list">-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <span class="badge">+4</span>-->
+<!--                    </li>-->
+<!--                  </ul>-->
+<!--                </td>-->
+<!--                <td class="text-truncate">$8999</td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="text-truncate">iPhone X</td>-->
+<!--                <td class="text-truncate">-->
+<!--                  <ul class="list-unstyled order-list">-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user1.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user2.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <img class="rounded-circle" src="assets/images/user/user3.jpg" alt="user">-->
+<!--                    </li>-->
+<!--                    <li class="avatar avatar-sm">-->
+<!--                      <span class="badge">+4</span>-->
+<!--                    </li>-->
+<!--                  </ul>-->
+<!--                </td>-->
+<!--                <td class="text-truncate">$8999</td>-->
+<!--              </tr>-->
               </tbody>
             </table>
           </div>
@@ -197,72 +352,22 @@
       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="box-part text-center">
           <iframe src="https://www.youtube.com/embed/iiARfK-fxAU?si=wFrNCj5uRVCwiGxL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <br/>
           <a href="#" onClick="return false;">Learn More</a>
         </div>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="box-part text-center">
           <iframe src="https://www.youtube.com/embed/JY20CGezkW8?si=1neJwIecaNhhaNIV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <br/>
           <a href="#" onClick="return false;">Learn More</a>
         </div>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="box-part text-center">
           <iframe src="https://www.youtube.com/embed/zwvwce07jYE?si=VvW3PjO1Ap3mSW3k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <br/>
           <a href="#" onClick="return false;">Learn More</a>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-3 col-sm-6">
-        <div class="counter-box text-center">
-          <div class="text font-16 m-b-5">Total Income</div>
-          <h4 class="m-b-10">$758
-            <i class="material-icons col-green">trending_up</i>
-          </h4>
-          <div class="apex-chart-center">
-            <apx-chart [series]="smallBarChart.series!" [chart]="smallBarChart.chart!"
-              [plotOptions]="smallBarChart.plotOptions!" [tooltip]="smallBarChart.tooltip!">
-            </apx-chart>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="counter-box text-center">
-          <div class="text font-16 m-b-5">Orders Received</div>
-          <h4 class="m-b-10">1025
-            <i class="material-icons col-red">trending_down</i>
-          </h4>
-          <div class="apex-chart-center">
-            <apx-chart [series]="smallAreaChart.series!" [chart]="smallAreaChart.chart!"
-              [stroke]="smallAreaChart.stroke!" [yaxis]="smallAreaChart.yaxis!" [fill]="smallAreaChart.fill!"
-              [colors]="smallAreaChart.colors!" [tooltip]="smallAreaChart.tooltip!"></apx-chart>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="counter-box text-center">
-          <div class="text font-16 m-b-5">Total Sales</div>
-          <h4 class="m-b-10">956
-            <i class="material-icons col-green">trending_up</i>
-          </h4>
-          <div class="apex-chart-center">
-            <apx-chart [series]="smallColumnChart.series!" [chart]="smallColumnChart.chart!"
-              [plotOptions]="smallColumnChart.plotOptions!" [tooltip]="smallColumnChart.tooltip!">
-            </apx-chart>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="counter-box text-center">
-          <div class="text font-16 m-b-5">Total Active Users</div>
-          <h4 class="m-b-10">214
-            <i class="material-icons col-red">trending_down</i>
-          </h4>
-          <div class="apex-chart-center">
-            <apx-chart [series]="smallLineChart.series!" [chart]="smallLineChart.chart!"
-              [stroke]="smallLineChart.stroke!" [tooltip]="smallLineChart.tooltip!"></apx-chart>
-          </div>
         </div>
       </div>
     </div>

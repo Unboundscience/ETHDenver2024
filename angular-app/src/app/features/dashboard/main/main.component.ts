@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { allIcons } from 'angular-feather/icons';
 import {FeatherIconsComponent} from "../../shared/components/feather-icons/feather-icons.component";
 import {UserAccountService} from "../../shared/services/user-account.service";
+import { CommonModule } from '@angular/common';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -32,6 +33,7 @@ export type ChartOptions = {
     styleUrls: ['./main.component.scss'],
     standalone: true,
     imports: [
+        CommonModule,
         NgApexchartsModule,
         MatButtonModule,
         MatMenuModule,
@@ -47,11 +49,16 @@ export class MainComponent implements OnInit {
   public smallColumnChart!: Partial<ChartOptions>;
   public smallLineChart!: Partial<ChartOptions>;
 
-  public userClass: 'scientist' | 'enthusiast' | undefined;
+  public userClass: 'scientist' | 'enthusiast' | undefined = 'scientist';
 
-  public sampleData = [
-    31, 40, 28, 44, 60, 55, 68, 51, 42, 85, 77, 31, 40, 28, 44, 60, 55,
+  public sampleDataUp1 = [
+    2, 6, 4, 10, 16, 25, 19, 51, 42, 85, 77, 66, 78, 82, 94, 90, 98,
   ];
+
+  public sampleDataUp2 = [
+    2, 6, 4, 10, 51, 42, 85, 77, 66, 78, 82, 75, 95
+  ];
+
 
   breadscrums = [
     {
@@ -91,7 +98,7 @@ export class MainComponent implements OnInit {
       series: [
         {
           name: 'income',
-          data: this.sampleData,
+          data: this.sampleDataUp1,
         },
       ],
       tooltip: {
@@ -114,7 +121,7 @@ export class MainComponent implements OnInit {
       series: [
         {
           name: 'order',
-          data: this.sampleData,
+          data: this.sampleDataUp2,
         },
       ],
       chart: {
@@ -174,7 +181,7 @@ export class MainComponent implements OnInit {
       series: [
         {
           name: 'income',
-          data: this.sampleData,
+          data: this.sampleDataUp1,
         },
       ],
 
@@ -198,7 +205,7 @@ export class MainComponent implements OnInit {
       series: [
         {
           name: 'Users',
-          data: this.sampleData,
+          data: this.sampleDataUp2,
         },
       ],
       chart: {

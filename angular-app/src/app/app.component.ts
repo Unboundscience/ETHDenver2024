@@ -1,5 +1,5 @@
-import {Component, CUSTOM_ELEMENTS_SCHEMA, OnInit} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component, CUSTOM_ELEMENTS_SCHEMA, Inject, OnInit, Renderer2} from '@angular/core';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {ActionButtonsComponent} from "./features/toolbar/action-buttons/action-buttons.component";
 import {Web3Service} from "./core/services/web3.service";
@@ -34,7 +34,10 @@ export class AppComponent implements OnInit {
 
   constructor(public web3Service: Web3Service,
               private alchemyService: AlchemyService,
-              private userAccountService: UserAccountService) {
+              private userAccountService: UserAccountService,
+             @Inject(DOCUMENT) private document: Document,
+            private renderer: Renderer2,
+  ) {
     this.latestBlock$ = this.alchemyService.getLatestBlock();
     this.account = null;
   }
@@ -42,5 +45,16 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.latestBlock$.subscribe((latest) => console.log(latest));
     this.account = this.web3Service.getAccountOnce();
+    this.setDarkTheme();
+  }
+
+  setDarkTheme() {
+    this.renderer.removeClass(this.document.body, 'menu_light');
+    this.renderer.removeClass(this.document.body, 'logo-white');
+    this.renderer.addClass(this.document.body, 'menu_dark');
+    this.renderer.addClass(this.document.body, 'logo-black');
+    const menuOption = 'menu_dark';
+    localStorage.setItem('choose_logoheader', 'logo-black');
+    localStorage.setItem('menuOption', menuOption);
   }
 }

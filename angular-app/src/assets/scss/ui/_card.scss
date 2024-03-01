@@ -3,11 +3,13 @@
  *  Author     : RedStar Template
  *  Description: This scss file for card style classes
  */
+$bg-color: #dadfe9;
+
 .card {
-  background: #fff;
+  background: $bg-color;
   min-height: 50px;
-  box-shadow: none;
-  border: 0;
+  box-shadow: 1px 1px 15px darkblue;
+  border: 2px solid #bababa;
   position: relative;
   margin-bottom: 24px;
   @include border-radius(10px);

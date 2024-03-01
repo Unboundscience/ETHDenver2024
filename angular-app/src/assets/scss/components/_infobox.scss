@@ -3,12 +3,17 @@
  *  Author     : RedStar Template
  *  Description: This scss file for info box style classes
  */
+
+$bg-color: #dadfe9;
+
 .info-box {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   height: 80px;
   display: flex;
   cursor: default;
-  background-color: #fff;
+  background-color: $bg-color;
+  box-shadow: 1px 1px 15px darkblue;
+  border: 2px solid #bababa;
   position: relative;
   overflow: hidden;
   margin-bottom: 30px;
@@ -116,7 +121,9 @@
   height: 80px;
   display: flex;
   cursor: default;
-  background-color: #fff;
+  background-color: $bg-color;
+  box-shadow: 1px 1px 15px darkblue;
+  border: 2px solid #bababa;
   position: relative;
   overflow: hidden;
   margin-bottom: 30px;
@@ -223,7 +230,9 @@
   height: 80px;
   display: flex;
   cursor: default;
-  background-color: #fff;
+  background-color: $bg-color;
+  box-shadow: 1px 1px 15px darkblue;
+  border: 2px solid #bababa;
   position: relative;
   overflow: hidden;
   margin-bottom: 30px;
@@ -332,7 +341,9 @@
   height: 80px;
   display: flex;
   cursor: default;
-  background-color: #fff;
+  background-color: $bg-color;
+  box-shadow: 1px 1px 15px darkblue;
+  border: 2px solid #bababa;
   position: relative;
   overflow: hidden;
   margin-bottom: 30px;
@@ -459,7 +470,7 @@
   margin: 8px 0px 25px 0px;
   border-radius: 10px;
   min-height: 140px;
-  background-color: #ffffff;
+  background-color: $bg-color;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
 }
 .info-box1 .text-end h2 {
