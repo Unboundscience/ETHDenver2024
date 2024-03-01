@@ -77,12 +77,18 @@ export class MainComponent implements OnInit {
     },
   ];
   constructor(public userAccountService: UserAccountService,
-              public alchemyService: ViemService) {
+              public viemSercice: ViemService) {
     this.userAccount = undefined;
   }
 
   ngOnInit() {
-    this.alchemyService.testPing().then((resp) => {
+    this.viemSercice.init().then(() => {
+        console.log('init success');
+        this.viemSercice.getDonorTotalSupply().then((resp) => {
+          console.log('ping success', resp);
+        });
+    });
+    this.viemSercice.getDonorTotalSupply().then((resp) => {
         console.log('ping success', resp);
     });
     this.userAccount = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') as string) : undefined;

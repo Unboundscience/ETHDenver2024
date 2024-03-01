@@ -44,15 +44,33 @@ export class ViemService {
   walletClient: any;
   publicClient: any;
   signer: any;
-  donorContract: any;
+  donorContractRead: any;
+    donorContractWrite: any;
     blockNumber: any;
 
   constructor() {
-
   }
-  // getLatestBlock(): Observable<any> {
-  //   return from(this.alchemy.core.getBlockNumber());
-  // }
+
+  async init() {
+      this.walletClient = createWalletClient({
+          chain: arbitrumSepolia,
+          transport: custom(window.ethereum as any)
+      });
+      this.publicClient = createPublicClient({
+          chain: arbitrumSepolia,
+          transport: http(environment.ALCHEMY_ARBTRUM_URL)
+      });
+      this.donorContractRead = getContract({
+          address: environment.DONOR_CONTRACT as Address,
+          abi: donorABI.output.abi,
+          publicClient: this.publicClient
+      }) as any;
+      this.donorContractWrite = getContract({
+          address: environment.DONOR_CONTRACT as Address,
+          abi: donorABI.output.abi,
+          walletClient: this.walletClient
+      }) as any;
+  }
 
   getNftsForOwner(ownerAddress: string){
   //   // Get all the NFTs owned by an address
@@ -68,30 +86,8 @@ export class ViemService {
   mintNFT(toAddress: string, amount: number): void {
   }
 
-  async testPing() {
-      const publicClient = createPublicClient({
-            chain: arbitrumSepolia,
-            transport: http(environment.ALCHEMY_ARBTRUM_URL)
-        });
-
-      // WORKS
-      // const walletClient = createWalletClient({
-      //     chain: arbitrumSepolia,
-      //     transport: custom(window.ethereum as any)
-      // });
-
-      // const [address] = await this.walletClient.getAddresses();
-      //   console.log('Wallet address: ', address);
-
-      const contract = getContract({
-            address: environment.DONOR_CONTRACT as Address,
-            abi: donorABI.output.abi,
-          publicClient: publicClient
-          // @ts-ignore
-          //   client: { public: publicClient, wallet: walletClient}
-        }) as any;
-        const result = await contract.read.totalSupply();
-        console.log('Total supply: ', result);
+  async getDonorTotalSupply() {
+        return await this.donorContractRead.read.totalSupply();
   }
 
     submitProposal(): Observable<any> {
