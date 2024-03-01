@@ -36,15 +36,20 @@ export type NftApiDto =
 })
 export class AlchemyService {
   readonly ALCHEMY_OP_API_KEY = environment.ALCHEMY_OP_API_KEY;
-  settings = {
+  readonly ALCHEMY_ARBITRUM_API_KEY = environment.ALCHEMY_ARBITRUM_API_KEY;
+  OptimismSettings = {
     apiKey: this.ALCHEMY_OP_API_KEY,
     network: Network.OPT_SEPOLIA,
   };
+  ArbitrumSettings = {
+      apiKey: this.ALCHEMY_ARBITRUM_API_KEY,
+      network: Network.ARB_SEPOLIA
+  }
   alchemy: Alchemy;
 
 
   constructor() {
-    this.alchemy = new Alchemy(this.settings);
+    this.alchemy = new Alchemy(this.OptimismSettings);
   }
 
   getLatestBlock(): Observable<any> {
@@ -71,25 +76,25 @@ export class AlchemyService {
 
   mintNFT(toAddress: string, amount: number): void {
   // Define an Alchemy Provider
-    const provider = new ethers.AlchemyProvider('sepolia', environment.ALCHEMY_OP_API_KEY)
+    const provider = new ethers.AlchemyProvider('sepolia', environment.ALCHEMY_ARBITRUM_API_KEY)
 
     // Get contract ABI file
 //    const contract = require("../artifacts/contracts/MyNFT.sol/MyNFT.json");
-//
+
 // // Create a signer
 //   const privateKey = process.env.PRIVATE_KEY
 //   const signer = new ethers.Wallet(privateKey, provider)
-//
+
 // // Get contract ABI and address
 //   const abi = contract.abi
 //   const contractAddress = '0xA4766Ceb9E84a71D282A4CED9fB8Fe93C49b2Ff7'
-//
+
 // // Create a contract instance
 //   const myNftContract = new ethers.Contract(contractAddress, abi, signer)
-//
+
 // // Get the NFT Metadata IPFS URL
 //   const tokenUri = "https://gateway.pinata.cloud/ipfs/QmYueiuRNmL4MiA2GwtVMm6ZagknXnSpQnB3z2gWbz36hP"
-//
+
 // // Call mintNFT function
 //   const mintNFT = async () => {
 //     let nftTxn = await myNftContract.mintNFT(signer.address, tokenUri)

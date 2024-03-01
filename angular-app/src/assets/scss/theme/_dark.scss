@@ -1520,6 +1520,12 @@ body.dark {
   .mdc-text-field--filled:not(.mdc-text-field--disabled) {
     background-color: #181b24;
   }
+  .create-proposals {
+    .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+      background-color: #a1b0e3;
+    }
+  }
+
   .mat-mdc-checkbox
     .mdc-checkbox
     .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not(

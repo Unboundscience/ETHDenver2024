@@ -8,6 +8,8 @@ import { allIcons } from 'angular-feather/icons';
 import {FeatherIconsComponent} from "../../shared/components/feather-icons/feather-icons.component";
 import {UserAccountService} from "../../shared/services/user-account.service";
 import { CommonModule } from '@angular/common';
+import { CreateProposalComponent } from '../../proposals/create-proposal/create-proposal.component';
+import { FileUploadComponent } from '../../shared/components/file-upload/file-upload.component';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -39,6 +41,8 @@ export type ChartOptions = {
         MatMenuModule,
         MatIconModule,
         FeatherIconsComponent,
+        CreateProposalComponent,
+        FileUploadComponent
     ],
 })
 export class MainComponent implements OnInit {
