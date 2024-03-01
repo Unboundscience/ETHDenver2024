@@ -1,12 +1,9 @@
-# This script evaluates proposals with this criteria:
-# activity, impact (problem scale, neglectedness, proposal solvability)
 
 import requests # the requests library can retrieve the content of the microgrants website page
 from bs4 import BeautifulSoup # BeautifulSoup can parse the fetched HTML content and extract the information we need
 import re # regular expression for filtering text
+import selenium
 
-# Step 1: get sample text for analysis
-# webscraping from manifund, a microgrants website
 
 # URL of the webpage being scraped
 url = 'https://manifund.org/projects/investigation-of-legionella-as-a-potential-cause-of-type-1-diabetes'
@@ -25,6 +22,7 @@ if response.status_code == 200:
     all_paragraphs = soup.find_all('p')
     print(type(all_paragraphs))
     print('text located')
+    print(len(all_paragraphs))
 
     # this loop is not working yet trying to figure it out 
     for paragraph in all_paragraphs:
@@ -33,7 +31,6 @@ if response.status_code == 200:
         print('---')
 else:
     print(f"Failed to retrieve the webpage: {response.status_code}")
-
 
 
 # step 2: apply question answering models
