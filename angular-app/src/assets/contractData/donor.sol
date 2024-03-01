@@ -37,4 +37,8 @@ contract donorToken is ERC20, ERC20Permit, ERC20Votes {
     {
         return super.nonces(owner);
     }
+
+    function ping() public pure returns (string memory) {
+        return "Pong!";
+    }
 }
