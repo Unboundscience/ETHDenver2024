@@ -122,5 +122,12 @@ export class AlchemyService {
   }
 
 
+    submitProposal(): Observable<any> {
+        return new Observable<any>((observer) => {
+            observer.next('Proposal Submitted');
+            observer.complete();
+        });
+    }
+
 }
 
