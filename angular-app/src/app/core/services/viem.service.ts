@@ -69,7 +69,7 @@ export class ViemService {
 
       this.donorContract = getContract({
           address: environment.DONOR_CONTRACT as Address,
-          abi: donorABI.output.abi,
+          abi: donorABI,
           client: { public: this.publicClient, wallet: this.walletClient }
       }) as any;
 
@@ -78,18 +78,16 @@ export class ViemService {
           abi: scientistABI.abi,
           client: { public: this.publicClient, wallet: this.walletClient }
       }) as any;
-      return this.getWalletAddresses().then((resp: any) => {
-            this.walletAddresses = resp;
-      });
+
 
         this.governorContract = getContract({
         address: environment.GOVERNOR_CONTRACT as Address,
         abi: governorABI.abi,
         client: { public: this.publicClient, wallet: this.walletClient }
-    }) as any;
-    return this.getWalletAddresses().then((resp: any) => {
-          this.walletAddresses = resp;
-    });
+      }) as any;
+      return this.getWalletAddresses().then((resp: any) => {
+        this.walletAddresses = resp;
+  });
   }
 
   isConnected(): boolean {
@@ -126,9 +124,9 @@ export class ViemService {
         return await this.donorContract.read.totalSupply();
   }
 
-    async submitProposal(title: string, description: string, tokenId: number) {
-        return await this.governorContract.write.submitProposal([title, description, tokenId], { 
+  async submitProposal(title: string, description: string, tokenId: number): Promise<any> {
+      return this.governorContract.write.propose([title, description, tokenId], { 
           account: this.walletAddresses[0]})
-         }
+      }
 }
 
