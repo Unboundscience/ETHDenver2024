@@ -93,6 +93,12 @@ export class ViemService {
     return nfts.some((nft: NftApiDto) => nft?.contract?.address === address);
   }
 
+  mintdonorNFT(amount: number): Promise<any> {
+    return this.donorContract.write.mint([amount], {
+        account: this.walletAddresses[0]
+    });
+}
+
   mintScientistNFT(): Promise<any> {
       return this.scientistContract.write.mint([], {
           account: this.walletAddresses[0],
