@@ -49,6 +49,10 @@ export class SignUpFlowComponent implements OnInit {
         await this.veimService.init();
     }
 
+    async mintScientistNFT() {
+        await this.veimService.mintScientistNFT();
+    }
+
     ngOnInit(): void {
         this.startVeim();
         this.userClassForm.get('userClass')?.valueChanges
@@ -61,6 +65,9 @@ export class SignUpFlowComponent implements OnInit {
                 });
                 this.userAccServ.setUserProp('userClass', formValue);
                 setTimeout(() => {
+                    if (formValue === 'scientist') {
+                        this.mintScientistNFT();
+                    }
                     this.router.navigate(['/dashboard']);
                 }, 750);
             });

@@ -49,6 +49,7 @@ export class LandingPgComponent {
                 this.openSnackBar('Access Verified...');
                 this.router.navigate(['/dashboard']);
             } else {
+                this.openSnackBar('!!Missing NFT Verification...');
                 this.router.navigate(['/sign-up']);
             }
         }
