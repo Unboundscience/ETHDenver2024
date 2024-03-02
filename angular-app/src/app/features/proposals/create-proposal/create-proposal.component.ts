@@ -34,12 +34,13 @@ export class CreateProposalComponent {
         this.createProposalForm = this.fb.group({
             title: this.fb.control([], Validators.required),
             description: this.fb.control([], Validators.required),
+            tokenId: this.fb.control([], Validators.required)
         });
     }
 
-    async submitProposal() {
-        const { title, description } = this.createProposalForm.getRawValue();
-        await this.veim.submitProposal(title, description, 12345)
+    async proposal() {
+        const { title, description, tokenId } = this.createProposalForm.getRawValue();
+        await this.veim.submitProposal(title, description, tokenId)
         this.openSnackBar('Proposal Submitted Successfully!');
         }
 
