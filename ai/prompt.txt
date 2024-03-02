@@ -1,4 +1,4 @@
-Given the below grant proposal, your task is to evaluate them based on four key metrics: 
+Given the below grant proposal, your task is to evaluate it based on four key metrics: 
 scale of problem, neglectedness of problem, tractability of the proposed solution, and activeness of the proposal. 
 Each metric should be scored on a scale from 1 to 10, where 10 represents the highest or most favorable rating. 
 Below are the definitions and considerations for each metric:
@@ -26,7 +26,7 @@ Detect if there is active discussion and comments around the proposal
 A score of 10 suggests a proposal with active and recent discussions
  
 
-Output format: State the four ratings out of 10 first. Then, provide a concise and precise justification for your scores in under 3 sentences,
+Output format: First, output the four ratings, as n/10. Next, below the ratings, provide a concise and precise justification for each metric in under 3 sentences respectively,
 highlighting key strengths and weaknesses that influenced your evaluation. 
 Your goal is to offer a balanced and insightful assessment that aids in identifying the most promising proposals for funding.
 
