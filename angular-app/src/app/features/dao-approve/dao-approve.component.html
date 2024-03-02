@@ -1,0 +1,10 @@
+<div class="center">
+    <form [formGroup]="daoForm">
+        <mat-form-field class="example-full-width">
+            <mat-label>Title</mat-label>
+            <input matInput placeholder="Title" formControlName="daoApprove"/>
+        </mat-form-field>
+    </form>
+    <br/>
+    <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+</div>
