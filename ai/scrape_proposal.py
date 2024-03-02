@@ -1,5 +1,5 @@
-# This script gets sample text for analysis
-# webscrapes from manifund, a microgrants website
+# This script gets a sample proposal analysis
+# It webscrapes from manifund, a microgrants website
 
 # imports
 from selenium import webdriver # tool in Selenium that allows you to control general web browsers programmatically
@@ -12,7 +12,8 @@ import requests
 
 
 def get_webpage_proposal(proposal_url):
-    '''currently supports scraping a webpage of a given proposal'''
+    '''currently supports scraping a single webpage of a given proposal'''
+
     # Setup Selenium WebDriver
     options = Options() # create instance of options
     options.headless = False  # Change to False if you want to see the browser window
@@ -27,6 +28,7 @@ def get_webpage_proposal(proposal_url):
     time.sleep(10) 
 
     # this contains the proposal and comment text
+    # in manifund, the proposal text is found within a class that has ".ProseMirror" in its name
     elements = driver.find_elements(By.CSS_SELECTOR, ".ProseMirror")
     proposal_text = ''
 
@@ -36,8 +38,8 @@ def get_webpage_proposal(proposal_url):
         #print(element.text)
         
     print(proposal_text)
-    print(len(proposal_text), len(element.text)) 
+    #print(len(proposal_text), len(element.text)) 
     return proposal_text
 
-    # Clean up: close the browser window
+    # Close the browser window
     driver.quit()
