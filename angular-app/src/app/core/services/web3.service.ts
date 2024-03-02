@@ -41,31 +41,31 @@ export class Web3Service {
       url: 'https://web3modal.com',
       icons: ['https://avatars.githubusercontent.com/u/37784886']
     }
-
-    const wagmiConfig = defaultWagmiConfig({ chains: this.chains, projectId: this.WAGMI_PROJ_ID, metadata });
-
-    const modalOptions:Web3ModalOptions =  { wagmiConfig, projectId: this.WAGMI_PROJ_ID, chains: this.chains };
-    this.web3modal = createWeb3Modal(modalOptions);
-
-    let accountCache: WalletAccountDto = {
-      address: '',
-      connector: null,
-      isConnected: false,
-      isConnecting: false,
-      isDisconnected: false,
-      isReconnecting: false,
-      status: ''
-    };
-    this.web3modal.subscribeState((newState: any) => {
-      const upd = this.getAccountOnce();
-      if (isEqual(upd, accountCache)) {
-        this.account$.next(upd);
-      }
-      accountCache = upd as WalletAccountDto;
-    });
+    //
+    // const wagmiConfig = {};// defaultWagmiConfig({ chains: this.chains, projectId: this.WAGMI_PROJ_ID, metadata });
+    //
+    // const modalOptions:Web3ModalOptions =  { wagmiConfig, projectId: this.WAGMI_PROJ_ID, chains: this.chains };
+    // this.web3modal = createWeb3Modal(modalOptions);
+    //
+    // let accountCache: WalletAccountDto = {
+    //   address: '',
+    //   connector: null,
+    //   isConnected: false,
+    //   isConnecting: false,
+    //   isDisconnected: false,
+    //   isReconnecting: false,
+    //   status: ''
+    // };
+    // this.web3modal.subscribeState((newState: any) => {
+    //   const upd = this.getAccountOnce();
+    //   if (isEqual(upd, accountCache)) {
+    //     this.account$.next(upd);
+    //   }
+    //   accountCache = upd as WalletAccountDto;
+    // });
   }
 
   getAccountOnce(): any {
-    return getAccount();
+    // return getAccount();
   }
 }
