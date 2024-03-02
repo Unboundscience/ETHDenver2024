@@ -690,11 +690,6 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
-						"name": "to",
-						"type": "address"
-					},
-					{
 						"internalType": "uint256",
 						"name": "amount",
 						"type": "uint256"
@@ -1339,11 +1334,11 @@
 			]
 		},
 		"contracts/donor2.sol": {
-			"keccak256": "0xce080389c69148ac2697e49ce35690a8c78ce9312e1153cd06eb00014ce54606",
+			"keccak256": "0x5b27b88095a33e69ef295495caea5a55790d48afc0564a0c7f55f54c4caa927f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://13484eeba5ad8e73b4e25273d84d0c4c43f1748d3c479e173b377056e761c774",
-				"dweb:/ipfs/QmT1Tdtkx561M7ExGuDSNPrjdVVT3mnuHRS36ph5QXmuCV"
+				"bzz-raw://959fded01e518a6d0b7492ce416d37710ba3cac61a4fe93dadaa1f163fbaad3d",
+				"dweb:/ipfs/QmPRv6g7fm6FuBVK2JE7eFVW2bVe4xqYvd2khNXE2Bv64y"
 			]
 		}
 	},

@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
-import {from, Observable} from "rxjs";
+import {Observable} from "rxjs";
 const donorABI = require('../../../assets/contractData/donor.json');
+const scientistABI = require('../../../assets/contractData/scientist.json');
 import {getContract, createWalletClient, createPublicClient, http, custom, Address} from 'viem';
 import { arbitrumSepolia } from 'viem/chains'
-import {EthereumClient} from "@web3modal/ethereum";
 
 export type ContractMetaDto = {
   address: string;
@@ -40,15 +40,18 @@ export class ViemService {
   readonly ALCHEMY_ARBITRUM_API_KEY = environment.ALCHEMY_ARBITRUM_API_KEY;
   readonly ALCHEMY_ARBTRUM_URL = environment.ALCHEMY_ARBTRUM_URL;
 
+  walletAddresses: Array<any>;
   viemClient: any;
   walletClient: any;
   publicClient: any;
   signer: any;
-  donorContractRead: any;
-    donorContractWrite: any;
-    blockNumber: any;
+  donorContract: any;
+  donorContractWrite: any;
+  scientistContract: any;
+  scientistContractWrite: any;
 
   constructor() {
+      this.walletAddresses = [];
   }
 
   async init() {
@@ -60,34 +63,55 @@ export class ViemService {
           chain: arbitrumSepolia,
           transport: http(environment.ALCHEMY_ARBTRUM_URL)
       });
-      this.donorContractRead = getContract({
+
+      this.donorContract = getContract({
           address: environment.DONOR_CONTRACT as Address,
           abi: donorABI.output.abi,
-          publicClient: this.publicClient
+          client: { public: this.publicClient, wallet: this.walletClient }
       }) as any;
-      this.donorContractWrite = getContract({
-          address: environment.DONOR_CONTRACT as Address,
-          abi: donorABI.output.abi,
-          walletClient: this.walletClient
+
+      this.scientistContract = getContract({
+          address: environment.SCIENTIST_NFT_CONTRACT as Address,
+          abi: scientistABI.abi,
+          client: { public: this.publicClient, wallet: this.walletClient }
       }) as any;
+      return this.getWalletAddresses().then((resp: any) => {
+            this.walletAddresses = resp;
+      });
   }
 
-  getNftsForOwner(ownerAddress: string){
-  //   // Get all the NFTs owned by an address
-  //   return this.alchemy.nft.getNftsForOwner(ownerAddress).then( (nfts) => {
-  //     return nfts;
-  //   });
-   }
+  isConnected(): boolean {
+    return this.walletAddresses.length > 0;
+  }
 
   hasRequiredNft(address: string, nfts: Array<NftApiDto>): boolean {
     return nfts.some((nft: NftApiDto) => nft?.contract?.address === address);
   }
 
-  mintNFT(toAddress: string, amount: number): void {
+  mintdonorNFT(amount: number): Promise<any> {
+    return this.donorContract.write.mint([amount], {
+        account: this.walletAddresses[0]
+    });
+}
+
+  mintScientistNFT(): Promise<any> {
+      return this.scientistContract.write.mint([], {
+          account: this.walletAddresses[0],
+      });
+  }
+
+  async hasNft(): Promise<boolean> {
+      const balance = await this.scientistContract.read.balanceOf([this.walletAddresses[0]]);
+      console.log(balance);
+      return balance > 0n;
+  }
+
+  async getWalletAddresses() {
+      return await this.walletClient.requestAddresses();
   }
 
   async getDonorTotalSupply() {
-        return await this.donorContractRead.read.totalSupply();
+        return await this.donorContract.read.totalSupply();
   }
 
     submitProposal(): Observable<any> {

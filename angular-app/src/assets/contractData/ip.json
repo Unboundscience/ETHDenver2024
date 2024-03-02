@@ -417,6 +417,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "ping",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "renounceOwnership",
 				"outputs": [],
 				"stateMutability": "nonpayable",
@@ -913,19 +926,19 @@
 			]
 		},
 		"contracts/ip.sol": {
-			"keccak256": "0x796f8085acb95d12c2fb5fc9cda1b840aba71398fbd116203adbd6ba6275627d",
+			"keccak256": "0x51e526296209dc1f32d6fb6e5b13575941ae8f16691bee68373ae1ac43c1f153",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://30d0237263c66bbc7aced0be6703dd242331f401292a26d38e5fd282e2259b3f",
-				"dweb:/ipfs/QmUNfxawGBE1WLEtFSTp3PuShJdqPFCYBXSrpvHKiPekqP"
+				"bzz-raw://89238c637ae1ca5ff542f2df6f1a0a5bd8037a8a435cec32ba707df1c5fcd613",
+				"dweb:/ipfs/QmTCDDijUDSxyT12dhSFesmCJR3eahzkNvoU52ddxnV89L"
 			]
 		},
 		"contracts/royalty.sol": {
-			"keccak256": "0x865d9411773ba1739e52269e080c5c8cbf2609fcc2d4e35495ab7233e50c34c4",
+			"keccak256": "0xcf6b0c7ef237f2e28b17354437cafdb998193c3e54525146e3589027b579f21b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f7006283f1220799785097ae11becc82567e3257ba860f3b3331f00405d06977",
-				"dweb:/ipfs/QmdoaqrmhLtQ44HyM5e9dxoZH3ga4qKLNK3ggp3TAH5TPY"
+				"bzz-raw://4fcbd1ae8daaa3d00403692b6cce422cc6e505a7fa35cc3714abb73b600300e8",
+				"dweb:/ipfs/QmZkC68MzztDmXTeNq1UD6uqp7a2bwzhW4AW8qc9yHCauY"
 			]
 		}
 	},

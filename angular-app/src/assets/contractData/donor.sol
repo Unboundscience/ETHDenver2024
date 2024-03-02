@@ -15,8 +15,8 @@ contract donorToken is ERC20, ERC20Permit, ERC20Votes {
 
     address public vault=0x9Fa4aCC9991Fd81bd7023d4E2665F31d06332ea6;
 
-    function mint(address to, uint256 amount) public payable {
-        _mint(to, amount);
+    function mint(uint256 amount) public payable {
+        _mint(msg.sender, amount);
         payable(vault).transfer(msg.value); // Transfer ETH received to the vault
     }
 
