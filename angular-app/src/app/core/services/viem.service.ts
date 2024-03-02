@@ -3,6 +3,7 @@ import {environment} from '../../../environments/environment';
 import {Observable} from "rxjs";
 const donorABI = require('../../../assets/contractData/donor.json');
 const scientistABI = require('../../../assets/contractData/scientist.json');
+const governorABI = require('../../../assets/contractData/gov.json');
 import {getContract, createWalletClient, createPublicClient, http, custom, Address} from 'viem';
 import { arbitrumSepolia } from 'viem/chains'
 
@@ -49,6 +50,8 @@ export class ViemService {
   donorContractWrite: any;
   scientistContract: any;
   scientistContractWrite: any;
+  governorContract: any;
+  governorContractWrite: any;
 
   constructor() {
       this.walletAddresses = [];
@@ -78,6 +81,15 @@ export class ViemService {
       return this.getWalletAddresses().then((resp: any) => {
             this.walletAddresses = resp;
       });
+
+        this.governorContract = getContract({
+        address: environment.GOVERNOR_CONTRACT as Address,
+        abi: governorABI.abi,
+        client: { public: this.publicClient, wallet: this.walletClient }
+    }) as any;
+    return this.getWalletAddresses().then((resp: any) => {
+          this.walletAddresses = resp;
+    });
   }
 
   isConnected(): boolean {
@@ -96,7 +108,7 @@ export class ViemService {
 
   mintScientistNFT(): Promise<any> {
       return this.scientistContract.write.mint([], {
-          account: this.walletAddresses[0],
+          account: this.walletAddresses[0]
       });
   }
 
@@ -114,12 +126,9 @@ export class ViemService {
         return await this.donorContract.read.totalSupply();
   }
 
-    submitProposal(): Observable<any> {
-        return new Observable<any>((observer) => {
-            observer.next('Proposal Submitted');
-            observer.complete();
-        });
-    }
-
+    async submitProposal(title: string, description: string, tokenId: number) {
+        return await this.governorContract.write.submitProposal([title, description, tokenId], { 
+          account: this.walletAddresses[0]})
+         }
 }
 
