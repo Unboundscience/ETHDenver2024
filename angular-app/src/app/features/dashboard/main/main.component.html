@@ -96,8 +96,9 @@
           </div>
       </div>
 
-      <button mat-raised-button (click)="mintVoteToken()">Mint Donor Token</button>
-
+      <ng-container *ngIf="userAccount?.userClass === 'enthusiast'">
+        <button mat-raised-button (click)="mintVoteToken()">Mint Donor Token</button>
+      </ng-container>
       <!-- Scientist stats -->
       <div class="row" *ngIf="userAccount?.userClass === 'scientist'">
 
@@ -486,7 +487,7 @@
       <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
         <div class="card">
           <div class="header">
-            <h2>My Proposals</h2>
+            <h2>Proposals for Voting</h2>
             <button mat-icon-button [matMenuTriggerFor]="menu" class="header-dropdown">
               <mat-icon>more_vert</mat-icon>
             </button>
@@ -625,7 +626,9 @@
       <!-- Browser Usage -->
       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
         <div class="card">
-          <app-create-proposal></app-create-proposal>
+            <ng-container *ngIf="userAccount?.userClass === 'scientist'">
+                <app-create-proposal></app-create-proposal>
+            </ng-container>
         </div>
       </div>
       <!-- #END# Browser Usage -->
