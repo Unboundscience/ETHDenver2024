@@ -4,9 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --configuration production",
+    "build": "./src/environments/create_env.sh && ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
+  },
+  "engines" : {
+    "npm" : "10.1.0",
+    "node" : "20.0.9"
   },
   "private": true,
   "dependencies": {
