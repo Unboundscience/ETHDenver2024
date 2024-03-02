@@ -67,9 +67,11 @@ export class ViemService {
           transport: http(environment.ALCHEMY_ARBTRUM_URL)
       });
 
+      console.log('donorABI.output.abi ', donorABI.output.abi);
+
       this.donorContract = getContract({
           address: environment.DONOR_CONTRACT as Address,
-          abi: donorABI,
+          abi: donorABI.output.abi,
           client: { public: this.publicClient, wallet: this.walletClient }
       }) as any;
 
@@ -82,7 +84,7 @@ export class ViemService {
 
         this.governorContract = getContract({
         address: environment.GOVERNOR_CONTRACT as Address,
-        abi: governorABI.abi,
+        abi: governorABI.output.abi,
         client: { public: this.publicClient, wallet: this.walletClient }
       }) as any;
       return this.getWalletAddresses().then((resp: any) => {
