@@ -2,19 +2,28 @@
 # activity, impact (problem scale, neglectedness, proposal solvability)
 
 import requests
-import openai 
+from openai import OpenAI 
 import os
-openai.api_key = '' # insert key
-#os.getenv('OPENAI_API_KEY')
+
+with open('prompt.txt', 'r') as file:
+	prompt_text = file.read()
+
+client = OpenAI(
+	api_key = ''
+    #api_key=os.environ.get("OPENAI_API_KEY"),
+)
+
 
 def evaluate(input_text):
-	response = openai.ChatCompletion.create(
-	model="gpt-3.5-turbo",
-	messages=[
-        {"role": "system", "content": "You are an experienced assistant at evaluating grants. You worked at 80000 hours and top VCs."},
-        {"role": "user", "content": f"Given the following proposal, please evaluate it on 4 metrics: Proposal activeness, problem scale, problem neglectedness, and proposal tractability using the 80000 hours framework. {input_text} Output 4 natural numbers from 1 - 10 (with 10 being best) for each metric."}
-        ])
-	return response.choices[0]
+	chat_completion = client.chat.completions.create(
+		messages=[
+			{
+				"role": "user",
+				"content": prompt_text+input_text,
+			}
+		],
+		model="gpt-3.5-turbo",
+	)
 bad_sample_idea = "I want to solve the problem of world hunger by creating an instagram campaign to raise awareness."
 results = evaluate(bad_sample_idea)
 print(results)

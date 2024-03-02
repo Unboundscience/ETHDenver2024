@@ -1,0 +1,26 @@
+Given a series of grant proposals, your task is to evaluate them based on four key metrics: 
+scale of problem, neglectedness of problem, tractability of the proposed solution, and activeness of the proposal. 
+Each metric should be scored on a scale from 1 to 10, where 10 represents the highest or most favorable rating. 
+Below are the definitions and considerations for each metric:
+
+Scale of Problem: 
+Evaluate the magnitude and impact of the problem the proposal aims to address. 
+Consider factors such as the number of people affected, severity of consequences, and geographical scope. 
+A score of 10 indicates a problem of global significance with profound impacts.
+
+Neglectedness of Problem: 
+Assess how overlooked or underfunded the problem is. 
+A high score means the problem receives little attention or resources relative to its scale. 
+Consider existing solutions, current funding levels, and the number of organizations actively working on the problem.
+
+Tractability of the Proposal: 
+Determine how feasible and effective the proposed solution is likely to be. 
+Consider the proposal's approach, the team's expertise, available technology, and the clarity of the implementation plan. 
+A score of 10 suggests a highly feasible solution with a clear path to significant impact.
+
+Activeness of the Proposal: 
+Detect if the proposal is active
+A score of 10 suggests a proposal with active and recent discussions
+ 
+For each proposal, provide a brief justification for your scores in under 5 sentences,highlighting key strengths and weaknesses that influenced your evaluation.
+Your goal is to offer a balanced and insightful assessment that aids in identifying the most promising proposals for funding.
