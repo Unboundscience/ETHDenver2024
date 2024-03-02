@@ -36,7 +36,7 @@ def get_webpage_proposal(proposal_url):
         #print(element.text)
         
     print(proposal_text)
-    print(len(proposal_text), len(element.text)) 
+    #print(len(proposal_text), len(element.text)) 
     return proposal_text
 
     # Clean up: close the browser window

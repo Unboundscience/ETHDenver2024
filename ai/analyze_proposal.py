@@ -5,9 +5,9 @@ import requests
 from openai import OpenAI 
 import os
 
-# print(os.listdir('.'))
-# os.chdir(r'\ai\')
-# print(os.listdir('.'))
+#print(os.listdir('.'))
+os.chdir('ai')
+#print(os.listdir('.'))
 
 
 with open('prompt.txt', 'r') as file:
@@ -15,7 +15,7 @@ with open('prompt.txt', 'r') as file:
 
 client = OpenAI(
 	api_key = ''
-    #api_key=os.environ.get("OPENAI_API_KEY"),
+    #api_key=os.environ.get("OPENAI_API_KEY")
 )
 
 
@@ -30,11 +30,6 @@ def evaluate(input_text):
 		model="gpt-3.5-turbo")
 	evaluation = chat_completion.choices[0].message.content
 	return evaluation
-	
-bad_sample_idea = "I want to solve the problem of world hunger by creating an instagram campaign to raise awareness."
-results = evaluate(bad_sample_idea)
-print(results)
 
-# to do:
-# include the piece of text being evaluated in inputs
-# replace with other models found on huggingface
+# to-do:
+# use other question-answering models found on huggingface
