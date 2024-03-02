@@ -8,8 +8,7 @@ import {
     MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 import {Router} from "@angular/router";
-import {ViemService, NftApiDto} from "../../core/services/viem.service";
-import {environment} from "../../../environments/environment";
+import {ViemService} from "../../core/services/viem.service";
 
 @Component({
     selector: 'app-landing-pg',
@@ -39,54 +38,39 @@ export class LandingPgComponent {
     constructor(private web3Service: Web3Service,
                 private snackBarService: MatSnackBar,
                 private router: Router,
-                private alchemyService: ViemService) {
+                private veimService: ViemService) {
     }
 
-    login(): void {
+    async checkNft() {
+        try {
+            const hasNft = await this.veimService.hasNft();
+            console.log(hasNft);
+            if (hasNft) {
+                this.openSnackBar('Access Verified...');
+                this.router.navigate(['/dashboard']);
+            } else {
+                this.router.navigate(['/sign-up']);
+            }
+        }
+        catch (err) {
+            console.error(err);
+        }
+    }
 
+    async login() {
+        await this.veimService.init();
         const nextStepLabelMap = {
             'connect-wallet': 'Please connect your wallet -->',
             'check-nft': 'Checking for NFT...',
             'sign-up': 'Let\'s Sign You Up! User would be redirected to sign-up page...'
         };
 
-        if (this.isWalletConnected()) {
-            const walletOwnerAddres = this.web3Service.getAccountOnce();
-            //check for nft in the wallet
-
-                this.openSnackBar('Checking Your Access...');
-                setTimeout(() => {
-                    // if they have the nft go to the dashboard
-                    // if (this.hasRequiredNft(nfts)) {
-                        this.openSnackBar('Access Verified...');
-                        setTimeout(() => {
-                            this.router.navigate(['/dashboard']);
-                        }, 750);
-                        // if not, send them to create a profile and mint an nft
-                    // } else {
-                    //     this.openSnackBar(nextStepLabelMap['sign-up']);
-                    //     this.router.navigate(['/sign-up']);
-                    // }
-                }, 1000);
-
+        if (this.veimService.isConnected()) {
+            this.openSnackBar('Checking Your Access...');
+            this.checkNft()
         } else {
             this.openSnackBar(nextStepLabelMap['connect-wallet']);
         }
-    }
-
-    isWalletConnected(): boolean {
-        const myAcc: any = this.web3Service.getAccountOnce();
-        if (myAcc?.isConnected) {
-            return true;
-        }
-        return false;
-    }
-
-    hasRequiredNft(nfts: { ownedNfts: Array<NftApiDto> | undefined }): boolean {
-        if (nfts.ownedNfts !== undefined && Array.isArray(nfts.ownedNfts) && nfts.ownedNfts.length > 0) {
-            return this.alchemyService.hasRequiredNft(this.NFT_ACCESS_CONTRACT, nfts.ownedNfts);
-        }
-        return false;
     }
 
     openSnackBar(msg: string) {

@@ -12,6 +12,7 @@ import {
     MatSnackBarVerticalPosition
 } from "@angular/material/snack-bar";
 import {UserAccountService} from "../shared/services/user-account.service";
+import {ViemService} from "../../core/services/viem.service";
 
 @Component({
     selector: 'app-sign-up-flow',
@@ -38,13 +39,18 @@ export class SignUpFlowComponent implements OnInit {
     constructor(private fb: FormBuilder,
                 private router: Router,
                 private snackBarService: MatSnackBar,
-                private userAccServ: UserAccountService) {
+                private userAccServ: UserAccountService,
+                private veimService: ViemService) {
         this.userClassForm = this.fb.group({
             userClass: this.fb.control([], Validators.required)
         })
     }
+    async startVeim() {
+        await this.veimService.init();
+    }
 
     ngOnInit(): void {
+        this.startVeim();
         this.userClassForm.get('userClass')?.valueChanges
             .pipe(distinctUntilChanged())
             .subscribe((formValue) => {
@@ -58,7 +64,8 @@ export class SignUpFlowComponent implements OnInit {
                     this.router.navigate(['/dashboard']);
                 }, 750);
             });
-
-
     }
+
+
+
 }

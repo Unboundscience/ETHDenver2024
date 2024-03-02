@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
-import {from, Observable} from "rxjs";
+import {Observable} from "rxjs";
 const donorABI = require('../../../assets/contractData/donor.json');
 const scientistABI = require('../../../assets/contractData/scientist.json');
 import {getContract, createWalletClient, createPublicClient, http, custom, Address} from 'viem';
@@ -70,8 +70,6 @@ export class ViemService {
           client: { public: this.publicClient, wallet: this.walletClient }
       }) as any;
 
-
-      console.log('scientistABI', scientistABI.abi);
       this.scientistContract = getContract({
           address: environment.SCIENTIST_NFT_CONTRACT as Address,
           abi: scientistABI.abi,
@@ -82,12 +80,9 @@ export class ViemService {
       });
   }
 
-  getNftsForOwner(ownerAddress: string){
-  //   // Get all the NFTs owned by an address
-  //   return this.alchemy.nft.getNftsForOwner(ownerAddress).then( (nfts) => {
-  //     return nfts;
-  //   });
-   }
+  isConnected(): boolean {
+    return this.walletAddresses.length > 0;
+  }
 
   hasRequiredNft(address: string, nfts: Array<NftApiDto>): boolean {
     return nfts.some((nft: NftApiDto) => nft?.contract?.address === address);
@@ -103,6 +98,12 @@ export class ViemService {
       return this.scientistContract.write.mint([], {
           account: this.walletAddresses[0],
       });
+  }
+
+  async hasNft(): Promise<boolean> {
+      const balance = await this.scientistContract.read.balanceOf([this.walletAddresses[0]]);
+      console.log(balance);
+      return balance > 0n;
   }
 
   async getWalletAddresses() {
