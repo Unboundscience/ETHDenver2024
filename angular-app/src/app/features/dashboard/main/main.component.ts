@@ -99,15 +99,7 @@ export class MainComponent implements OnInit {
     }
 
     async ngOnInit() {
-        try {
-            await this.viemSercice.init();
-            console.log('init success');
-            const resp = await this.viemSercice.mintScientistNFT();
-            console.log('resp', resp);
-        }
-        catch (err) {
-            console.error(err);
-        }
+
 
 
         this.userAccount = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') as string) : undefined;
@@ -119,6 +111,17 @@ export class MainComponent implements OnInit {
         this.chart2();
     }
 
+    async mintVoteToken(){ 
+      try {
+          await this.viemSercice.init();
+          console.log('init success');
+          const resp = await this.viemSercice.mintdonorNFT(4);
+          console.log('resp', resp);
+      }
+      catch (err) {
+          console.error(err);
+      }
+    }
     private cardChart1() {
         this.smallBarChart = {
             chart: {
