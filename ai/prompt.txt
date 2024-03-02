@@ -1,4 +1,4 @@
-Given the below grant proposal, your task is to evaluate them based on four key metrics: 
+Given the below grant proposal, your task is to evaluate it based on four key metrics: 
 scale of problem, neglectedness of problem, tractability of the proposed solution, and activeness of the proposal. 
 Each metric should be scored on a scale from 1 to 10, where 10 represents the highest or most favorable rating. 
 Below are the definitions and considerations for each metric:

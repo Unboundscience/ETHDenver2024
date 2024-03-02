@@ -1,5 +1,5 @@
 # This script evaluates proposals with this criteria:
-# activity, impact (problem scale, neglectedness, proposal solvability)
+# problem scale, problem neglectedness, proposal tractability, current proposal activeness)
 
 import requests
 from openai import OpenAI 
@@ -14,7 +14,7 @@ with open('prompt.txt', 'r') as file:
  	prompt_text = file.read()
 
 client = OpenAI(
-	api_key = ''
+	api_key = '' # make sure to replace it with your openAI API key
     #api_key=os.environ.get("OPENAI_API_KEY")
 )
 
