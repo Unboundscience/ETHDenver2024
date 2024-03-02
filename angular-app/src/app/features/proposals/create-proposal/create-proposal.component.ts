@@ -29,7 +29,7 @@ export class CreateProposalComponent {
     createProposalForm: FormGroup;
 
     constructor(private fb: FormBuilder,
-                private alchemyService: ViemService,
+                private veim: ViemService,
                 private snackBarService: MatSnackBar) {
         this.createProposalForm = this.fb.group({
             title: this.fb.control([], Validators.required),
@@ -37,13 +37,11 @@ export class CreateProposalComponent {
         });
     }
 
-    submitProposal(): void {
-        this.alchemyService.submitProposal().subscribe((response) => {
-            if (response) {
-                this.openSnackBar('Proposal Submitted Successfully!');
-            }
-        });
-    }
+    async submitProposal() {
+        const { title, description } = this.createProposalForm.getRawValue();
+        await this.veim.submitProposal(title, description, 12345)
+        this.openSnackBar('Proposal Submitted Successfully!');
+        }
 
     openSnackBar(msg: string) {
         this.snackBarService.open(msg, '', {
