@@ -45,7 +45,7 @@ export class LandingPgComponent {
         try {
             const hasNft = await this.veimService.hasNft();
             console.log(hasNft);
-            if (hasNft) {
+            if (hasNft && localStorage.getItem('userClass') ) {
                 this.openSnackBar('Access Verified...');
                 this.router.navigate(['/dashboard']);
             } else {
